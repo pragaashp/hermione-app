@@ -10,9 +10,9 @@ require 'simplecov'
 require "codeclimate-test-reporter"
 
 SimpleCov.start 'rails' do
-  add_filter "/app/models/course.rb"
-  add_filter "/app/controllers/login_controller.rb"
-  add_filter "/app/models/request.rb"
+  add_filter "app/models/course.rb"
+  add_filter "app/controllers/login_controller.rb"
+  add_filter "app/models/request.rb"
 end
 CodeClimate::TestReporter.start
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -9,7 +9,11 @@ require 'cucumber/rails'
 require 'simplecov'
 require "codeclimate-test-reporter"
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter "app/models/course.rb"
+  add_filter "app/controllers/login_controller.rb"
+  add_filter "app/models/request.rb"
+end
 CodeClimate::TestReporter.start
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
