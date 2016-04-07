@@ -7,3 +7,6 @@ exclude_paths:
 - "Gemfile.lock"
 - "coverage/assets/0.10.0/application.js"
 - "features/step_definitions/web_steps.rb"
+- "app/models/request.rb"
+- "app/controllers/login_controller.rb	"
+- "app/models/course.rb"
