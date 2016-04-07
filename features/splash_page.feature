@@ -1,8 +1,8 @@
 Feature: display collection of videos on splash page
 
   As a visitor
-  So that I can learn more about Project Hermoine
-  I want to see video demos of using Hermoine
+  So that I can learn more about Project Hermione
+  I want to see video demos of using Hermione
 
   Scenario: splash page with demo videos
     # Change the video titles when necessary.

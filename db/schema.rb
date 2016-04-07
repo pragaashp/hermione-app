@@ -11,6 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160402192421) do
+
+  create_table "assignments", id: false, force: :cascade do |t|
+    t.integer "professor_id"
+    t.integer "course_id"
+  end
+
+  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id"
+  add_index "assignments", ["professor_id"], name: "index_assignments_on_professor_id"
+
+  create_table "courses", force: :cascade do |t|
+    t.integer  "ccn"
+    t.string   "title"
+    t.string   "location"
+    t.string   "days"
+    t.string   "time"
+    t.integer  "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "courses", ["request_id"], name: "index_courses_on_request_id"
+
+  create_table "professors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.text     "comments"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
