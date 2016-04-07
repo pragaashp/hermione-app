@@ -1,6 +1,7 @@
-class ProfessorController < LoginController
+class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHANGE TO LoginController #
 
-  before_action :is_professor?
+  # After CAS Implemented, Uncomment Below.
+  # before_action :is_professor?
 
   def index
 

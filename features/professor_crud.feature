@@ -5,7 +5,7 @@ Feature: Create, Update, Read & Delete Requests
   I want to view my classes, submit webcast request and check their status
 
   Scenario: Create a new webcast request for a class
-    Given I am on the professor page
+    Given I am on the professor page for "Armando Fox"
     And I follow "New Webcast Request"
     Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
     And I fill in the following:
@@ -23,7 +23,7 @@ Feature: Create, Update, Read & Delete Requests
     Given the following requests exist:
       |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
       | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page
+    And I am on the professor page for "Armando Fox"
     And I should see "CS 169"
     When I follow "Edit Request"
     Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
@@ -37,7 +37,7 @@ Feature: Create, Update, Read & Delete Requests
     Given the following requests exist:
       |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
       | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page
+    And I am on the professor page for "Armando Fox"
     And I should see "CS 169"
     When I follow "Delete Request"
     Then I should be on the professor page

@@ -6,9 +6,9 @@ Feature: Create, edit and configure webcasts by professors.
 	
  Scenario: Create a new webcast for a class
     Given I am on the professor request page 
-    Then I should see a "Create new webcast request"
+    Then I should see a "New Webcast Request"
 
  Scenario: Edit a webcast for a class
     Given I am on the professor request page
     And I have at least one class
-    Then I should see a "Edit Class"
+    Then I should see a "Edit Request"

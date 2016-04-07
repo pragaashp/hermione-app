@@ -15,8 +15,8 @@ Feature: View webcast requests submitted by faculty members/professors.
     Then I should see requests for the following courses: "CS 169,CS 162,CS 189"
     And I follow "Time"
     Then I should see "CS 162" before "CS 189"
-    And I follow "CCN"
-    Then I should see "CS 162" before "CS 169"
+    And I follow "Professor"
+    Then I should see "CS 169" before "CS 162"
     And I follow "Location"
     Then I should see "10 EVANS" before "245 LI KA SHING"
 

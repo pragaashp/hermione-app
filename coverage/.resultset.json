@@ -1,11 +1,13 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/PragaashP/Workspace/hermione/app/controllers/main_controller.rb": [
+      "/Users/PragaashP/Workspace/hermione/app/controllers/ets_controller.rb": [
         1,
         null,
-        1,
         null,
+        null,
+        null,
+        1,
         null,
         null,
         null,
@@ -34,57 +36,53 @@
         1,
         null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/login_controller.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+      "/Users/PragaashP/Workspace/hermione/app/controllers/main_controller.rb": [
         1,
         null,
         1,
         null,
         null,
         null,
-        1,
-        0,
         null,
         null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/ets_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+      "/Users/PragaashP/Workspace/hermione/app/models/professor.rb": [
+        1,
+        1,
+        1,
+        null
       ],
       "/Users/PragaashP/Workspace/hermione/app/controllers/professor_controller.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/PragaashP/Workspace/hermione/app/controllers/login_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -113,17 +111,12 @@
         0,
         0
       ],
-      "/Users/PragaashP/Workspace/hermione/app/models/professor.rb": [
-        0,
-        0,
-        0
-      ],
       "/Users/PragaashP/Workspace/hermione/app/models/request.rb": [
         0,
         0,
         0
       ]
     },
-    "timestamp": 1460014078
+    "timestamp": 1460046048
   }
 }

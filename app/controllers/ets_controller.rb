@@ -1,20 +1,9 @@
-class EtsController < LoginController
+class EtsController < ApplicationController # TEMPORARY: AFTER CAS -> CHANGE TO LoginController #
 
-  before_action :is_ets?
+  # After CAS Implemented, Uncomment Below.
+  # before_action :is_ets?
 
   def index
-
-  end
-
-  def new
-
-  end
-
-  def edit
-
-  end
-
-  def create
 
   end
 

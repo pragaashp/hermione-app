@@ -17,9 +17,11 @@ class LoginController < ApplicationController
 
   def is_professor?
     # Make API call via Professor's Model to establish professor status.
+    true
   end
 
   def is_ets?
-    !is_professor?
+    # !is_professor?
+    true
   end
 end
