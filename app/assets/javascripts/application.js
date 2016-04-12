@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
 
-$(document).on('page:change',function() {
+
+$(document).ready(function() {
     var menu_bar = $('#bs-example-navbar-collapse-1'),
         menu_button = $('.navbar-toggle'),
         aria = 'aria-expanded';
@@ -72,5 +72,15 @@ $(window, document, undefined).ready(function() {
     $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
         $(this).removeClass('is-active');
     });
-
+    
+   
 });
+
+// $(document).ready(function() {
+//      $('.button').click(function (e) {
+//         // alert(1)
+//         e.preventDefault();
+//         $('.button').parent().toggleClass('expand');
+//         $('.button').parent().children().toggleClass('expand');
+//     });
+// });

@@ -1,3 +1,241 @@
 // Place all the styles related to the Professor controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$body-bg: #FAFAFA;
+//Other pretty primary colors: E91E63 FF5722
+$primary-col: #03A9F4;
+$accent-col: #FFC400;
+$accent-fallback: #FFD740;
+
+$font-stack: Roboto, sans-serif;
+$easer: cubic-bezier(0.4, 0, 0.2, 1);
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto ', sans-serif;
+  font-size: 40px;
+  color: #FDB515;
+  line-height: 1.4;
+  background-color: #FDB515;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+
+
+/* navbar */
+.navbar {
+  padding: 20px 0;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  background-color: #3B7EA1;
+}
+
+.logo,
+.nav {
+  display: inline-block;
+  height: 40px;
+  margin: 0;
+}
+
+// .navbar .navbar-brand img {
+//         width: 200px;
+//     }
+
+/* nav links */
+.nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav li {
+    color: #FDB515;
+  display: inline-block;
+  margin-left: 40px;
+}
+
+.navbar a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #DDD;
+  background-color: #000;
+}
+
+/* if you want pull right nav links */
+.nav-right {
+  float: right;
+  line-height: 39px;
+}
+
+
+
+/* responsive */
+@media screen and (max-width: 677px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+// body {
+//   font-family: $font-stack;
+//   width: 100%;
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+//   color: #FFF;
+//   background: $body-bg;
+// }
+
+.prof-table{
+  position: relative;
+}
+
+.h1{
+  font-weight: 700;
+  font-size: 64px;
+  margin: 20px 0 0 0;
+  padding: 0 20px;
+}
+
+.p{
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.em{
+  font-style: normal;
+  color: $accent-col;
+}
+
+.a{
+  font-style: normal;
+  color: $accent-fallback;
+  text-decoration: none;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.sub{
+  margin: 0;
+}
+
+.button{
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  font-size: 20px;
+  line-height: 60px;
+  font-weight: bold;
+  transform: rotate(45deg);
+
+  transition: all 0.7s $easer;
+}
+.button.expand {
+  transform: rotate(630deg);
+
+  transition: all 0.5s $easer;
+}
+
+.button-container {
+  // position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 5vh;  
+  background-color: $primary-col;
+
+  border-radius: 50%;
+  width: 60px;
+  max-width: 60px;
+  height: 60px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  overflow: hidden;
+
+  transition: all 0.2s 0.45s,
+              height 0.2s $easer 0.25s, 
+              max-width 0.2s $easer 0.35s, 
+              width 0.2s $easer 0.35s;
+}
+.button-container.expand {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.17);
+  border-radius: 0;
+  width: 80%;
+  height: 500px;
+  max-width: 600px;
+  padding: 0;
+
+  transition: all 0.2s, max-width 0.2s $easer 0.1s, height 0.3s ease 0.25s;
+}
+
+.content {
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  text-align: left;
+
+  transition: transform 0.2s $easer, opacity 0.2s 0.2s;
+}
+.content.expand {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: transform 0.7s $easer 0.05s, opacity 0s;
+}
+
+.content .head {
+  padding: 0 0 20px 0;
+}
+.content .body {
+  color: #000;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #FFF;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.action-bar {
+  padding-left: 15px;
+  border-top: 1px solid #E0E0E0;
+  width: 100%;
+}
+.action-bar a {
+  text-transform: uppercase;
+  line-height: 52px;
+  color: $accent-col;
+}
