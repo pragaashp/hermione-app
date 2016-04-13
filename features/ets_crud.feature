@@ -28,3 +28,4 @@ Feature: View webcast requests submitted by faculty members/professors.
     And I press "Submit"
     Then I should see requests for the following courses: "CS 189"
     And I should not see requests for the following courses: "CS 162,CS 169"
+

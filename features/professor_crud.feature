@@ -42,3 +42,4 @@ Feature: Create, Update, Read & Delete Requests
     When I follow "Delete Request"
     Then I should be on the professor page
     And I should not see "CS 169"
+
