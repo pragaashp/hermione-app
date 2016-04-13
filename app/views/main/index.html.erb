@@ -6,35 +6,42 @@
     <title>Project Hermione (Beta)</title>
     <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="//cdn.muicss.com/mui-0.5.0/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.5.0/js/mui.min.js"></script>
     <%= csrf_meta_tags %>
   </head>
 
   <body id="page-top" class="index">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-
-    <div class="container">
+  <div class="mui-appbar" id = "navbar" style = "position:fixed;">
       <title>Project Hermione (Beta)</title>
-      <!--<h1 class="logo"><a href="#">Simple Navbar</a></h1>-->
-      <a class="navbar-brand page-scroll" href="#page-top"><%= image_tag "main/logo.png" %></a>
-      <ul class="nav nav-right">
-        <li class="hidden">-->
-          <a href="#page-top"></a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">FEATURES</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#portfolio">ABOUT</a>
-        </li>
-        <li>
-          <%= link_to "SIGN IN", login_path, class: "page-scroll", data: { toggle: "modal" } %>
-        </li>
-      </ul>
-    </div><!--/.container-->
-  
-  </nav>
+        <div class="mui-container-fluid" >
+          <a href="/professor">
+            <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
+          </a>
+          <ul class="nav nav-right">
+            <li class="hidden">-->
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <div>
+                <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
+              </div>
+            </li>
+          </ul>
+        </div>
+  </div>
 
   <header>
     <div class="container">

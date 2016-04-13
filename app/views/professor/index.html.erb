@@ -1,10 +1,4 @@
 <html>
-  <style>
-  table, td, th { border : 1px solid black; }
-  th { padding : 13px; }
-  td { padding : 15px; }
-  </style>
-  
   <head>
     <title>Project Hermione (Beta)</title>
       <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
@@ -17,36 +11,45 @@
   <body id="prof-top" class="index">
     
   <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-
-    <div class="container">
+  <div class="mui-appbar" id = "navbar" style = "position:fixed;">
       <title>Project Hermione (Beta)</title>
-      <!--<h1 class="logo"><a href="#">Simple Navbar</a></h1>-->
-      <a class="navbar-brand page-scroll" href="#page-top"><%= image_tag "main/logo.png" %></a>
-      <ul class="nav nav-right">
-        <li class="hidden">-->
-          <a href="#page-top"></a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#services">FEATURES</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#portfolio">ABOUT</a>
-        </li>
-        <li>
-          <%= link_to "SIGN OUT", login_path, class: "page-scroll", data: { toggle: "modal" } %>
-        </li>
-      </ul>
-    </div><!--/.container-->
+        <div class="mui-container-fluid" >
+          <a href="/professor">
+            <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
+          </a>
+          <ul class="nav nav-right">
+            <li class="hidden">-->
+              <a href="#page-top"></a>
+            </li>
+            <li>
+              <div>
+                <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
+              </div>
+            </li>
+          </ul>
+        </div>
+  </div>
   
-  </nav>
   <div class="button-container"><span class="button">&#10006;</span>
     <div class="content">
       <div class="head">
-        <div class="mui-textfield mui-textfield--float-label">
+        <div class="mui-container-fluid" >
+          <div class="mui-textfield mui-textfield--float-label">
             <input type="text">
             <label>Course Name</label>
+          </div>
         </div>
+        
         <!--<p class="sub">by <a href="http://codepen.io/woodwork/" target="_blank">Joe Harry</a></p>-->
       </div>
       <div class="body">
@@ -64,9 +67,12 @@
             <input type="text">
             <label>Location</label>
           </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Days & Time</label>
+          <!--<div class="mui-textfield mui-textfield--float-label">-->
+          <!--  <input type="text">-->
+          <!--  <label>Days & Time</label>-->
+          <!--</div>-->
+          <div class="mui-checkbox" id = 'M'>
+            <label><input type="checkbox">Option two is disabled</label>
           </div>
           <div class="mui-textfield mui-textfield--float-label">
             <input type="text">
