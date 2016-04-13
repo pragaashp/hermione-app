@@ -8,51 +8,41 @@
       <script src="//cdn.muicss.com/mui-0.5.0/js/mui.min.js"></script>
   </head>
 
-  <body id="prof-top" class="index">
-    
-  <!-- Navigation -->
-  <div class="mui-appbar" id = "navbar" style = "position:fixed;">
-      <title>Project Hermione (Beta)</title>
-        <div class="mui-container-fluid" >
-          <a href="/professor">
-            <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
-          </a>
-          <ul class="nav nav-right">
-            <li class="hidden">-->
-              <a href="#page-top"></a>
-            </li>
-            <li>
-              <div>
-                <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
-              </div>
-            </li>
-          </ul>
-        </div>
-  </div>
-  
-  <div class="button-container"><span class="button">&#10006;</span>
-    <div class="content">
-      <div class="head">
-        <div class="mui-container-fluid" >
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Course Name</label>
+  <!--<body id="prof-top" class="index">-->
+  <!--<div class= 'background'>-->
+
+    <!-- Navigation -->
+    <div class="mui-appbar--z4" id = "navbar" style = "position:absolute;">
+        <title>Project Hermione (Beta)</title>
+          <div class="mui-container-fluid" >
+            <a href="/professor">
+              <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
+            </a>
+            <ul class="nav nav-right">
+              <li class="hidden">-->
+                <a href="#page-top"></a>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
+                </div>
+              </li>
+            </ul>
           </div>
-        </div>
-        
-        <!--<p class="sub">by <a href="http://codepen.io/woodwork/" target="_blank">Joe Harry</a></p>-->
-      </div>
-      <div class="body">
+    </div>
+    <div class="button-container"><span class="button">&#10006;</span>
+      <div class="mui--text-display3">New Class</div>
+      <div class="mui--z3" id = 'form1'>
         <form>
           <!--<legend>Title</legend>-->
           <div class="mui-textfield mui-textfield--float-label">
@@ -67,12 +57,9 @@
             <input type="text">
             <label>Location</label>
           </div>
-          <!--<div class="mui-textfield mui-textfield--float-label">-->
-          <!--  <input type="text">-->
-          <!--  <label>Days & Time</label>-->
-          <!--</div>-->
-          <div class="mui-checkbox" id = 'M'>
-            <label><input type="checkbox">Option two is disabled</label>
+          <div class="mui-textfield mui-textfield--float-label">
+            <input type="text">
+            <label>Days & Time</label>
           </div>
           <div class="mui-textfield mui-textfield--float-label">
             <input type="text">
@@ -86,5 +73,47 @@
         </form>
       </div>
     </div>
-  </div>
+    <!--<div class="button-container"><span class="button">&#10006;</span>-->
+    <!--  <div class="mui--z3" id = 'form1'>-->
+        <!--<div class="head">-->
+        <!--  <div class="mui-container-fluid" >-->
+        <!--    <div class="mui-textfield mui-textfield--float-label">-->
+        <!--      <input type="text">-->
+        <!--      <label>Course Name</label>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--</div>-->
+        <!--<div class="mui-container-fluid">-->
+    <!--     <form>-->
+          <!--<legend>Title</legend>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label">-->
+    <!--        <input type="number">-->
+    <!--        <label>CCN</label>-->
+    <!--      </div>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label">-->
+    <!--        <input type="text">-->
+    <!--        <label>Course Name</label>-->
+    <!--      </div>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label">-->
+    <!--        <input type="text">-->
+    <!--        <label>Location</label>-->
+    <!--      </div>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label">-->
+    <!--        <input type="text">-->
+    <!--        <label>Days & Time</label>-->
+    <!--      </div>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label">-->
+    <!--        <input type="text">-->
+    <!--        <label>Request/Layout</label>-->
+    <!--      </div>-->
+    <!--      <div class="mui-textfield mui-textfield--float-label" id = 'submit'>-->
+    <!--        <input type="text">-->
+    <!--        <label>Status</label>-->
+    <!--      </div>-->
+    <!--      <button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
+    <!--    </form>-->
+        <!--</div>-->
+    <!--  </div>-->
+    <!--</div>-->
+  <!--</div>-->
 </html>

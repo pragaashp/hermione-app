@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$body-bg: #EEEEEE;
+$body-bg: #FAFAFA;
 //Other pretty primary colors: E91E63 FF5722
 $primary-col: #3B7EA1;
 $accent-col: #003262;
@@ -11,15 +11,15 @@ $accent-fallback: #FFD740;
 $font-stack: Roboto, sans-serif;
 $easer: cubic-bezier(0.4, 0, 0.2, 1);
 
-// body {
-//   font-family: $font-stack;
-//   width: 100%;
-//   height: 100%;
-//   margin: 0;
-//   padding: 0;
-//   color: #FFF;
-//   background: $body-bg;
-// }
+body {
+  font-family: $font-stack;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: $body-bg;
+  background: $body-bg;
+}
 
 .prof-table{
   position: relative;
@@ -74,12 +74,13 @@ $easer: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-container {
-  position: absolute;
+  position: relative;
   margin: auto;
   left: 0;
   right: 0;
-  top: 5vh;  
-  background-color: $primary-col;
+  top: 150px;  
+  background-color: #EE1F60;
+  color : rgba(0,0,0,0.87);
 
   border-radius: 50%;
   width: 60px;
@@ -98,8 +99,8 @@ $easer: cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.17);
   border-radius: 0;
   width: 80%;
-  height: 750px;
-  max-width: 600px;
+  height: 690px;
+  max-width: 650px;
   padding: 0;
 
   transition: all 0.2s, max-width 0.2s $easer 0.1s, height 0.3s ease 0.25s;
@@ -147,3 +148,17 @@ $easer: cubic-bezier(0.4, 0, 0.2, 1);
 // #submit {
 //   background-color : 000;
 // }
+
+#form1 {
+  position : relative;
+  top : 0px;
+  width : 100%;
+  max-width : 650px;
+  margin : auto;
+  background-color : #FFFFFF;
+  // margin-top : 0px;
+}
+
+.background {
+  background-color : $body-bg;
+}
