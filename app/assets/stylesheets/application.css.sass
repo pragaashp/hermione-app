@@ -17,3 +17,75 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600")
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700)
+
+$body-bg: #eeeeee
+
+//Other pretty primary colors: E91E63 FF5722
+$primary-col: #3b7ea1
+$accent-col: #003262
+$accent-fallback: #ffd740
+
+$font-stack: Roboto, sans-serif
+$easer: cubic-bezier(0.4, 0, 0.2, 1)
+
+body
+  padding: 0
+  margin: 0
+  font-family: 'Roboto ', sans-serif
+  font-size: 40px
+  color: #FDB515
+  line-height: 1.4
+  background-color: #EEEEEE
+
+/* navbar
+#navbar
+  position: fixed
+  padding: 25px 0
+  margin-bottom: 20px
+  width: 100%
+  height: auto
+  background-color: #3B7EA1
+#navbar li:hover
+  background-color: #3B7EA1
+  
+/* nav links
+.nav
+  padding: 0
+  margin: 0
+  list-style: none
+
+.nav li
+  color: #FDB515
+  font-size: 20px
+  display: inline-block
+  margin-left: 40px  
+
+#navbar a
+  color: #FDB515
+  text-decoration: none
+  vertical-align: middle
+
+.nav-right
+  float: right
+
+/* responsive
+@media screen and (max-width: 677px)
+  .container
+    width: 80%
+
+@media screen and (max-width: 767px)
+  .container
+    width: 90%
+
+@media screen and (min-width: 768px)
+  .container
+    width: 750px
+
+@media screen and (min-width: 992px)
+  .container
+    width: 960px
+
+@media screen and (min-width: 1200px)
+  .container
+    width: 1170px
