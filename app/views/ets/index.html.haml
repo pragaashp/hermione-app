@@ -1,42 +1,36 @@
 %h1 ETS Page
+= form_tag ets_path,:method => :get do
+  = label :course, 'Building'
+  = text_field_tag :building, params[:building]
+  = label :course, 'Room'
+  = text_field_tag :room, params[:room]
+  = label :course, 'Time'
+  = text_field_tag :time, params[:time]
+  
+  = submit_tag 'Submit', name: nil
 
-:css
-  table th {
-    font-size: 20px;
-    padding: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    font-family:Arial, sans-serif;
-  }
-  table td {
-    font-size: 15px;
-    text-align: center;
-    padding: 10px;
-    font-family:Arial, sans-serif;
-  }
 
 %h3 Requests
 %table{:border => 1}
   %thead
-    %tr
+    %tr 
+      %th= link_to 'CCN'
+      %th= link_to 'Title'
       %th= link_to 'Professor'
       %th= link_to 'Location'
-      %th= link_to 'Days & Time'
-      %th= link_to 'Request/Layout'
-      %th= link_to 'Date Requested'
+      %th= link_to 'Days' 
+      %th= link_to 'Time'
+      %th= link_to 'Request'
       %th= link_to 'Status'
   %tbody
-    %tr
-      %td= 'Armando Fox'
-      %td= '10 EVANS'
-      %td= 'TuTh 1530-1700'
-      %td= 'Audio & Projector'
-      %td= '2007-01-18 06:10:17'
-      %td= 'Approved'
-    // - @request
-    //   %tr
-    //     %td= request.professor
-    //     %td= request.building
-    //     %td= request.room
-    //     %td= request.layout
-    //     %td= request.date_requested
+    - @courses.each do |course|
+      %tr
+        %td= course.ccn
+        %td= course.title
+        %td= course.professors.map(&:name).join(",")
+        %td= course.location
+        %td= course.days
+        %td= course.time
+        %td= course.request.comments
+        %td= course.request.status
+
