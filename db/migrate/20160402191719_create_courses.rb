@@ -6,7 +6,6 @@ class CreateCourses < ActiveRecord::Migration
       t.string :location
       t.string :days
       t.string :time
-      t.belongs_to :request, index: true
       t.timestamps null: false
     end
   end
