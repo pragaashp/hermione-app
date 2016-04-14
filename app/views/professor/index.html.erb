@@ -24,6 +24,11 @@
               </li>
               <li>
                 <div>
+                  <a class="mui-btn mui-btn--flat" href="#services"><div>Listing Requests For:<%= @professor.name%></div></a>
+                </div>
+              </li>
+              <li>
+                <div>
                   <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
                 </div>
               </li>
@@ -40,39 +45,92 @@
             </ul>
           </div>
     </div>
-    <div class="button-container"><span class="button">&#10006;</span>
-      <div class="mui--text-display3">New Class</div>
-      <div class="mui--z3" id = 'form1'>
-        <form>
-          <!--<legend>Title</legend>-->
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="number">
-            <label>CCN</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Course Name</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Location</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Days & Time</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Request/Layout</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label" id = 'submit'>
-            <input type="text">
-            <label>Status</label>
-          </div>
-          <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
-        </form>
+    <% if @requests.length > 0 %>
+      <% @requests.each do |currRequest| %>
+        <div class="button-container"><span class="button">&#10006;</span>
+        <div class="mui--text-display3">New Class</div>
+        <div class="mui--z3" id = 'form1'>
+          <form>
+            <!--<legend>Title</legend>-->
+            <!--<div class="mui-textfield mui-textfield--float-label">-->
+            <!--  <input type="number">-->
+            <!--  <label>CCN</label>-->
+            <!--</div>-->
+            <%= number_field_tag :ccn, currRequest.course.ccn %>
+            <!--<div class="mui-textfield mui-textfield--float-label">-->
+            <!--  <input type="text">-->
+            <!--  <label>Course Name</label>-->
+            <!--</div>-->
+            <%= text_field_tag :course_title, currRequest.course.title %>
+            <!--<div class="mui-textfield mui-textfield--float-label">-->
+            <!--  <input type="text">-->
+            <!--  <label>Location</label>-->
+            <!--</div>-->
+            <%= text_field_tag :location, currRequest.course.location %>
+            <!--<div class="mui-textfield mui-textfield--float-label">-->
+            <!--  <input type="text">-->
+            <!--  <label>Days & Time</label>-->
+            <!--</div>-->
+            <%= text_field_tag :day_and_time, currRequest.course.days + ' ' + currRequest.course.time %>
+            <!--<div class="mui-textfield mui-textfield--float-label">-->
+            <!--  <input type="text">-->
+            <!--  <label>Request/Layout</label>-->
+            <!--</div>-->
+            <%= text_field_tag :location, currRequest.comments %>
+            <!--<div class="mui-textfield mui-textfield--float-label" id = 'submit'>-->
+            <!--  <input type="text">-->
+            <!--  <label>Status</label>-->
+            <!--</div>-->
+            <%if currRequest.status == 0%>
+              <%= text_field_tag :location, 'Declined' %>
+            <%elsif%>
+              <%= text_field_tag :location, 'Approved' %>
+            <%else%>
+              <%= text_field_tag :location, 'Pending' %>
+            <%end%>
+            <%= button_to 'Submit', edit_professor_path('blah'), method: :put %>
+            <!--<button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
+          </form>
+        </div>
       </div>
-    </div>
+      <% end %>
+    <% else %>
+      <div class="button-container"><span class="button">&#10006;</span>
+          <div class="mui--text-display3">New Class</div>
+          <div class="mui--z3" id = 'form1'>
+            <form>
+              <!--<legend>Title</legend>-->
+              <div class="mui-textfield mui-textfield--float-label">
+                <input type="number">
+                <label>CCN</label>
+              </div>
+              <div class="mui-textfield mui-textfield--float-label">
+                <input type="text">
+                <label>Course Name</label>
+              </div>
+              <div class="mui-textfield mui-textfield--float-label">
+                <input type="text">
+                <label>Location</label>
+              </div>
+              <div class="mui-textfield mui-textfield--float-label">
+                <input type="text">
+                <label>Days & Time</label>
+              </div>
+              <div class="mui-textfield mui-textfield--float-label">
+                <input type="text">
+                <label>Request/Layout</label>
+              </div>
+              <div class="mui-textfield mui-textfield--float-label" id = 'submit'>
+                <input type="text">
+                <label>Status</label>
+              </div>
+              <%= button_to 'Submit', new_professor_path("blah"), method: :post %>
+              <!--<button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
+            </form>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <!--<div class="button-container"><span class="button">&#10006;</span>-->
     <!--  <div class="mui--z3" id = 'form1'>-->
         <!--<div class="head">-->
