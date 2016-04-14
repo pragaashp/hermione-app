@@ -9,6 +9,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   </head>
+
   <body class = "body">
     <!-- Navigation -->
     <div class="mui-appbar--z4" id = "navbar" style = "position:absolute;">
@@ -57,10 +58,44 @@
                   <button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" id = "search-button">
                       <i class="material-icons md-24" id = "search-icon">search</i>
                   </button>
-                  
               </div>
             </div>
         </div>
+    </div>
+    
+    <div class="mui--z3" id = table >
+        <table class="mui-table">
+          <thead>
+            <tr>
+              <th>
+                <%= link_to 'CCN' %>
+              </th>
+              <th>
+                <%= link_to 'Title' %>
+              </th>
+              <th>
+                <%= link_to 'Professor' %>
+              </th>
+              <th>
+                <%= link_to 'Location' %>
+              </th>
+              <th>
+                <%= link_to 'Days'  %>
+              </th>
+              <th>
+                <%= link_to 'Time' %>
+              </th>
+              <th>
+                <%= link_to 'Request' %>
+              </th>
+              <th>
+                <%= link_to 'Status' %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
     </div>
   </body>
 
