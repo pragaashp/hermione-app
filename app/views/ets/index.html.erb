@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Project Hermione (Beta)</title>
+      <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+      <link href="//cdn.muicss.com/mui-0.5.0/css/mui.min.css" rel="stylesheet" type="text/css" />
+      <script src="//cdn.muicss.com/mui-0.5.0/js/mui.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+
+  <body class = "body">
+    <!-- Navigation -->
+    <div class="mui-appbar--z4" id = "navbar" style = "position:absolute;">
+        <title>Project Hermione (Beta)</title>
+          <div class="mui-container-fluid" >
+            <a href="/professor">
+              <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
+            </a>
+            <ul class="nav nav-right">
+              <li class="hidden">-->
+                <a href="#page-top"></a>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
+                </div>
+              </li>
+            </ul>
+          </div>
+    </div>
+    
+    <div class="mui--z3" id = "search-bar" >
+        <div class="mui-container">
+            <div class="mui-row">
+              <div class="mui-col-md-5">
+                <div class="mui-textfield">
+                    <input type="text" placeholder="Building">
+                </div>
+              </div>
+              <div class="mui-col-md-5">
+                <div class="mui-textfield">
+                    <input type="number" placeholder="Room">
+                </div>
+               </div>
+              <div class="mui-col-md-2">
+                  <button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" id = "search-button">
+                      <i class="material-icons md-24" id = "search-icon">search</i>
+                  </button>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mui--z3" id = table >
+        <table class="mui-table">
+          <thead>
+            <tr>
+              <th>
+                <%= link_to 'CCN' %>
+              </th>
+              <th>
+                <%= link_to 'Title' %>
+              </th>
+              <th>
+                <%= link_to 'Professor' %>
+              </th>
+              <th>
+                <%= link_to 'Location' %>
+              </th>
+              <th>
+                <%= link_to 'Days'  %>
+              </th>
+              <th>
+                <%= link_to 'Time' %>
+              </th>
+              <th>
+                <%= link_to 'Request' %>
+              </th>
+              <th>
+                <%= link_to 'Status' %>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+    </div>
+  </body>
+
+</html>
