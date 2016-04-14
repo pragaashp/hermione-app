@@ -4,14 +4,10 @@ class EtsController < ApplicationController # TEMPORARY: AFTER CAS -> CHANGE TO 
   # before_action :is_ets?
 
   def index
-    if params[:room] and params[:building]
-      @courses = Course.search(params[:room] + " " + params[:building],params[:time])
-    elsif params[:room] 
-      @courses = Course.search(params[:room],params[:time])
-    elsif params[:building]
-      @courses = Course.search(params[:building],params[:time])
-    else
-      @courses = Course.all
-    end
+    sort = params[:sort]
+    if params[:search].nil? then location ="" else location = params[:search][:room] + params[:search][:building].upcase end
+    if params[:time].nil? then time = "" else time = params[:time] end
+    @courses = Course.search(location,time,sort)
+
   end
 end

@@ -13,13 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20160402192421) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assignments", id: false, force: :cascade do |t|
     t.integer "professor_id"
     t.integer "course_id"
   end
 
-  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id"
-  add_index "assignments", ["professor_id"], name: "index_assignments_on_professor_id"
+  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id", using: :btree
+  add_index "assignments", ["professor_id"], name: "index_assignments_on_professor_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.integer  "ccn"
@@ -46,6 +49,6 @@ ActiveRecord::Schema.define(version: 20160402192421) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "requests", ["course_id"], name: "index_requests_on_course_id"
+  add_index "requests", ["course_id"], name: "index_requests_on_course_id", using: :btree
 
 end

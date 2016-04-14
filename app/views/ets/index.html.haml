@@ -1,11 +1,11 @@
 %h1 ETS Page
 = form_tag ets_path,:method => :get do
   = label :course, 'Building'
-  = text_field_tag :building, params[:building]
+  = search_field_tag 'search[building]'
   = label :course, 'Room'
-  = text_field_tag :room, params[:room]
+  = search_field_tag 'search[room]' 
   = label :course, 'Time'
-  = text_field_tag :time, params[:time]
+  = search_field_tag 'search[time]'
   
   = submit_tag 'Submit', name: nil
 
@@ -16,10 +16,10 @@
     %tr 
       %th= link_to 'CCN'
       %th= link_to 'Title'
-      %th= link_to 'Professor'
-      %th= link_to 'Location'
+      %th= link_to 'Professor',ets_path(:sort => 'professor')
+      %th= link_to 'Location',ets_path(:sort => 'location')
       %th= link_to 'Days' 
-      %th= link_to 'Time'
+      %th= link_to 'Time',ets_path(:sort => 'time')
       %th= link_to 'Request'
       %th= link_to 'Status'
   %tbody
