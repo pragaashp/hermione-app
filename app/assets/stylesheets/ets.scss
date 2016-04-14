@@ -1,3 +1,31 @@
 // Place all the styles related to the ETS controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#ets_results {
+  position : relative;
+  top : 0px;
+  width : 100%;
+  max-width : 650px;
+  margin : auto;
+  background-color : #FAFAFA;
+  top : 150px;
+}
+
+body {
+    background-color : red;
+}
+#search-bar {
+  position : relative;
+  top : 0px;
+  width : 100%;
+  max-width : 650px;
+  margin : auto;
+  background-color : #FFFFFF;
+  top : 150px;
+}
+
+#search-icon {
+    position: relative;
+    top : 10px;
+
+}

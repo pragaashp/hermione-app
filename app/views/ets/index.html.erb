@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Project Hermione (Beta)</title>
+      <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+      <link href="//cdn.muicss.com/mui-0.5.0/css/mui.min.css" rel="stylesheet" type="text/css" />
+      <script src="//cdn.muicss.com/mui-0.5.0/js/mui.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="mui-appbar--z4" id = "navbar" style = "position:absolute;">
+        <title>Project Hermione (Beta)</title>
+          <div class="mui-container-fluid" >
+            <a href="/professor">
+              <img src="/assets/main/logo.png" alt="Logo" style="width:auto;height:45px;border:0;">
+            </a>
+            <ul class="nav nav-right">
+              <li class="hidden">-->
+                <a href="#page-top"></a>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a class="mui-btn mui-btn--flat" href="#portfolio">ABOUT</a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <%= link_to "SIGN OUT", login_path, class: "mui-btn mui-btn--flat", data: { toggle: "modal" } %>
+                </div>
+              </li>
+            </ul>
+          </div>
+    </div>
+    
+    <div class="mui--z3" id = "search-bar" >
+        <div class="mui-container-fluid">
+            <div class="mui-row">
+              <div class="mui-col-md-4">
+                <div class="mui-textfield">
+                    <input type="text" placeholder="Building">
+                </div>
+              </div>
+              <div class="mui-col-md-4">
+                <div class="mui-textfield">
+                    <input type="text" placeholder="Room">
+                </div>
+               </div>
+              <div class="mui-col-md-4">
+                  <i class="material-icons md-24" id = "search-icon">search</i>
+              </div>
+            </div>
+        </div>
+    </div>
+  </body>
+
+</html>
