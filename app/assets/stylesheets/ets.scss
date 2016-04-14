@@ -11,13 +11,15 @@
   top : 150px;
 }
 
-body {
-    background-color : red;
+.body {
+    background-color : #FAFAFA;
 }
 #search-bar {
   position : relative;
   top : 0px;
-  width : 100%;
+  width : 50%;
+  height : 60px;
+  min-width : 500px;
   max-width : 650px;
   margin : auto;
   background-color : #FFFFFF;
@@ -26,6 +28,12 @@ body {
 
 #search-icon {
     position: relative;
-    top : 10px;
+    top : 5px;
+}
 
+#search-button {
+    position: relative;
+    margin: auto;
+    margin-top : auto;
+    top : 15px;
 }

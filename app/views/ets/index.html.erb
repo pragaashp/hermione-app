@@ -9,7 +9,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   </head>
-  <body>
+  <body class = "body">
     <!-- Navigation -->
     <div class="mui-appbar--z4" id = "navbar" style = "position:absolute;">
         <title>Project Hermione (Beta)</title>
@@ -41,20 +41,23 @@
     </div>
     
     <div class="mui--z3" id = "search-bar" >
-        <div class="mui-container-fluid">
+        <div class="mui-container">
             <div class="mui-row">
-              <div class="mui-col-md-4">
+              <div class="mui-col-md-5">
                 <div class="mui-textfield">
                     <input type="text" placeholder="Building">
                 </div>
               </div>
-              <div class="mui-col-md-4">
+              <div class="mui-col-md-5">
                 <div class="mui-textfield">
-                    <input type="text" placeholder="Room">
+                    <input type="number" placeholder="Room">
                 </div>
                </div>
-              <div class="mui-col-md-4">
-                  <i class="material-icons md-24" id = "search-icon">search</i>
+              <div class="mui-col-md-2">
+                  <button class="mui-btn mui-btn--small mui-btn--primary mui-btn--flat" id = "search-button">
+                      <i class="material-icons md-24" id = "search-icon">search</i>
+                  </button>
+                  
               </div>
             </div>
         </div>
