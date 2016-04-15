@@ -42,20 +42,21 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
-  begin
-    visit path_to(page_name)
-  rescue NoMethodError
-    pending
-  end
+  visit path_to(page_name)
+  # begin
+  #   visit path_to(page_name)
+  # rescue NoMethodError
+  #   pending
+  # end
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^(?:|I )press "([^"]*)"$/ do |button|
-  click_button(button)
-end
+# When /^(?:|I )press "([^"]*)"$/ do |button|
+#   # click_button(button)
+# end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
@@ -80,11 +81,11 @@ end
 # TODO: Add support for checkbox, select or option
 # based on naming conventions.
 #
-When /^(?:|I )fill in the following:$/ do |fields|
-  fields.rows_hash.each do |name, value|
-    When %{I fill in "#{name}" with "#{value}"}
-  end
-end
+# When /^(?:|I )fill in the following:$/ do |fields|
+#   fields.rows_hash.each do |name, value|
+#     When %{I fill in "#{name}" with "#{value}"}
+#   end
+# end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)
@@ -106,13 +107,13 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
-end
+# Then /^(?:|I )should see "([^"]*)"$/ do |text|
+#   if page.respond_to? :should
+#     page.should have_content(text)
+#   else
+#     assert page.has_content?(text)
+#   end
+# end
 
 Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)

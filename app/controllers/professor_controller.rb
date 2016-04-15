@@ -46,7 +46,7 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
     if Course.where(:ccn => ccn).blank?
       new_req = Request.new({:comments => request_and_layout, :status => "Pending"})
       new_course = Course.new({:ccn =>ccn,:title => course_name,:location =>location, :days=>days, :time=>time, :request=>new_req,
-      :professors=>Professor.where(:name =>'Armando Fox')})
+      :professors=>Professor.where(:name => 'Armando Fox')})
       new_req.save
       new_course.save
     else

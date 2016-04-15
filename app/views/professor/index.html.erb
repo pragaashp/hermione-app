@@ -45,7 +45,7 @@
             </ul>
           </div>
     </div>
-      <div class="button-container"><span class="button">&#10006;</span>
+      <div class="button-container" id="newReq" ><span class="button">&#10006;</span>
         <div class="mui--text-display3">New Class</div>
         <div class="mui--z3" id = 'form1'>
             <%=form_tag(professor_create_path(@professor.id), :method => 'post') do%>
@@ -54,7 +54,7 @@
                 <%= number_field_tag :ccn%>
               </p>
               <p>
-                Course Name:
+                Title:
                 <%= text_field_tag :course_name%>
               </p>
               <p>
@@ -78,9 +78,9 @@
       </div>
       <% @requests.each do |currRequest| %>
             
-        <div class="button-container"><span class="button">&#10006;</span>
+        <div class="button-container" id="editReq"><span class="button">&#10006;</span>
         <div class="mui--text-display3">Edit Class</div>
-        <div class="mui--z3" id = 'form1'>
+        <div class="mui--z3" id = 'form2'>
             <%=form_tag(professor_edit_path(currRequest.id), :method => 'post') do%>
               <p>
                 CCN:
