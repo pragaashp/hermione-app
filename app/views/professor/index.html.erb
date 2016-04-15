@@ -45,133 +45,80 @@
             </ul>
           </div>
     </div>
-    <% if @requests.length > 0 %>
-      <% @requests.each do |currRequest| %>
-        <div class="button-container"><span class="button">&#10006;</span>
+      <div class="button-container"><span class="button">&#10006;</span>
         <div class="mui--text-display3">New Class</div>
         <div class="mui--z3" id = 'form1'>
-          <form>
-            <!--<legend>Title</legend>-->
-            <!--<div class="mui-textfield mui-textfield--float-label">-->
-            <!--  <input type="number">-->
-            <!--  <label>CCN</label>-->
-            <!--</div>-->
-            <%= number_field_tag :ccn, currRequest.course.ccn %>
-            <!--<div class="mui-textfield mui-textfield--float-label">-->
-            <!--  <input type="text">-->
-            <!--  <label>Course Name</label>-->
-            <!--</div>-->
-            <%= text_field_tag :course_title, currRequest.course.title %>
-            <!--<div class="mui-textfield mui-textfield--float-label">-->
-            <!--  <input type="text">-->
-            <!--  <label>Location</label>-->
-            <!--</div>-->
-            <%= text_field_tag :location, currRequest.course.location %>
-            <!--<div class="mui-textfield mui-textfield--float-label">-->
-            <!--  <input type="text">-->
-            <!--  <label>Days & Time</label>-->
-            <!--</div>-->
-            <%= text_field_tag :day_and_time, currRequest.course.days + ' ' + currRequest.course.time %>
-            <!--<div class="mui-textfield mui-textfield--float-label">-->
-            <!--  <input type="text">-->
-            <!--  <label>Request/Layout</label>-->
-            <!--</div>-->
-            <%= text_field_tag :location, currRequest.comments %>
-            <!--<div class="mui-textfield mui-textfield--float-label" id = 'submit'>-->
-            <!--  <input type="text">-->
-            <!--  <label>Status</label>-->
-            <!--</div>-->
-            <%if currRequest.status == 0%>
-              <%= text_field_tag :location, 'Declined' %>
-            <%elsif%>
-              <%= text_field_tag :location, 'Approved' %>
-            <%else%>
-              <%= text_field_tag :location, 'Pending' %>
+            <%=form_tag(professor_create_path(@professor.id), :method => 'post') do%>
+              <p>
+                CCN:
+                <%= number_field_tag :ccn%>
+              </p>
+              <p>
+                Course Name:
+                <%= text_field_tag :course_name%>
+              </p>
+              <p>
+                Location:
+                <%= text_field_tag :location%>
+              </p>
+              <p>
+                Days:
+                <%= text_field_tag :days%>
+              </p>
+              
+              <p>
+                Request and Layout:
+                <%= text_field_tag :request_and_layout%>
+              </p>
+              <p>
+               <%= submit_tag 'Submit' %>
+              </p>
             <%end%>
-            <%= button_to 'Submit', edit_professor_path('blah'), method: :put %>
-            <!--<button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
-          </form>
         </div>
       </div>
-      <% end %>
-    <% else %>
-      <div class="button-container"><span class="button">&#10006;</span>
-          <div class="mui--text-display3">New Class</div>
-          <div class="mui--z3" id = 'form1'>
-            <form>
-              <!--<legend>Title</legend>-->
-              <div class="mui-textfield mui-textfield--float-label">
-                <input type="number">
-                <label>CCN</label>
-              </div>
-              <div class="mui-textfield mui-textfield--float-label">
-                <input type="text">
-                <label>Course Name</label>
-              </div>
-              <div class="mui-textfield mui-textfield--float-label">
-                <input type="text">
-                <label>Location</label>
-              </div>
-              <div class="mui-textfield mui-textfield--float-label">
-                <input type="text">
-                <label>Days & Time</label>
-              </div>
-              <div class="mui-textfield mui-textfield--float-label">
-                <input type="text">
-                <label>Request/Layout</label>
-              </div>
-              <div class="mui-textfield mui-textfield--float-label" id = 'submit'>
-                <input type="text">
-                <label>Status</label>
-              </div>
-              <%= button_to 'Submit', new_professor_path("blah"), method: :post %>
-              <!--<button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
-            </form>
-          </div>
+      <% @requests.each do |currRequest| %>
+            
+        <div class="button-container"><span class="button">&#10006;</span>
+        <div class="mui--text-display3">Edit Class</div>
+        <div class="mui--z3" id = 'form1'>
+            <%=form_tag(professor_edit_path(currRequest.id), :method => 'post') do%>
+              <p>
+                CCN:
+                <%= number_field_tag :ccn, currRequest.course.ccn%>
+              </p>
+              <p>
+                Course Name:
+                <%= text_field_tag :course_name, currRequest.course.title%>
+              </p>
+              <p>
+                Location:
+                <%= text_field_tag :location, currRequest.course.location%>
+              </p>
+              <p>
+                Days:
+                <%= text_field_tag :days, currRequest.course.days%>
+              </p>
+              
+              <p>
+                Request and Layout:
+                <%= text_field_tag :request_and_layout, currRequest.comments%>
+              </p>
+              <p>
+                Status:
+                <% if currRequest.status == 0%>
+                  <%statTxt = 'Declined'%>
+                <% elsif currRequest.status == 1%>
+                  <%statTxt = 'Approved'%>
+                <%else%>
+                  <%statTxt = 'pending'%>
+                <%end%>
+                <%= text_field_tag "status", statTxt%>
+              </p>
+              <p>
+               <%= submit_tag 'Submit' %>
+              </p>
+            <%end%>
         </div>
       </div>
     <% end %>
-    <!--<div class="button-container"><span class="button">&#10006;</span>-->
-    <!--  <div class="mui--z3" id = 'form1'>-->
-        <!--<div class="head">-->
-        <!--  <div class="mui-container-fluid" >-->
-        <!--    <div class="mui-textfield mui-textfield--float-label">-->
-        <!--      <input type="text">-->
-        <!--      <label>Course Name</label>-->
-        <!--    </div>-->
-        <!--  </div>-->
-        <!--</div>-->
-        <!--<div class="mui-container-fluid">-->
-    <!--     <form>-->
-          <!--<legend>Title</legend>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="number">-->
-    <!--        <label>CCN</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Course Name</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Location</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Days & Time</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Request/Layout</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label" id = 'submit'>-->
-    <!--        <input type="text">-->
-    <!--        <label>Status</label>-->
-    <!--      </div>-->
-    <!--      <button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
-    <!--    </form>-->
-        <!--</div>-->
-    <!--  </div>-->
-    <!--</div>-->
-  <!--</div>-->
 </html>

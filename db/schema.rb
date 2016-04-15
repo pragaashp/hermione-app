@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160402192421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+  
+  # declined, approved pending, 0, 1 and 2, respectively
 
   add_index "requests", ["course_id"], name: "index_requests_on_course_id"
 

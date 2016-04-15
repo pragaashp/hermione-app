@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   get 'ets/' => 'ets#index', as: :ets
 
   # - - - - - - - - TEMPORARY - - - - - - - - - - #
-  # get 'professor/' => 'professor#index'
+  get 'professor/' => 'professor#index'
+  post 'professor_edit/:id' => 'professor#edit', as: :professor_edit
+  post 'professor_create/:id' => 'professor#create', as: :professor_create
   # - - - - - - - - - - - - - - - - - - - - - - - #
-  
-  resources :professor
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
