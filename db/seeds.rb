@@ -13,7 +13,6 @@ professor1 = Professor.create({:name=> "Armando Fox", :department=>"Computer Sci
 professor2 = Professor.create({:name=> "Joseph, A D", :department=>"Computer Science"})
 professor3 = Professor.create({:name=> "Shewchuk, J", :department=>"Computer Science"})
 
-
 Course.create({:ccn =>26619,:title => "CS 169",:location =>"10 EVANS", :days=>"TuTh", :time=>"1530-1700", :request=>request1,
 :professors=>Professor.where(:name =>'Armando Fox')})
 
@@ -22,4 +21,3 @@ Course.create({:ccn =>26619,:title => "CS 162",:location =>"245 LI KA SHING", :d
 
 Course.create({:ccn =>26619,:title => "CS 189",:location =>"2050 VLSB", :days=>"MW", :time=>"1830-2000", :request=>request3,
 :professors=>Professor.where(:name =>'Shewchuk, J')})
-

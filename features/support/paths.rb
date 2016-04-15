@@ -22,6 +22,8 @@ module NavigationHelpers
     # Temporary placeholder until an actual path exists
     when /^the professor request page$/
       '/professor'
+    when /^the professor page$/
+      '/professor'
       
     when /^the ETS page$/
       ets_path

@@ -6,40 +6,47 @@ Feature: Create, Update, Read & Delete Requests
 
   Scenario: Create a new webcast request for a class
     Given I am on the professor page for "Armando Fox"
-    And I follow "New Webcast Request"
-    Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
+    And I press "New Webcast Request"
+    Then I should see the following fields: "CCN,Title,Location,Days,Request"
     And I fill in the following:
       | CCN      |        26619      |
       | Title    |       CS 169      |
       | Location |      10 EVANS     |
       | Days     |        TuTh       |
-      | Time     |     1530-1700     |
       | Request  | Audio & Projector |
     And I press "Submit"
-    Then I should be on the professor page
-    And I should see the following: "CS 169,TuTh,10 EVANS,Audio & Projector"
+    Then I should be on the professor page for "Armando Fox"
+    And I should see "CS 169,TuTh,10 EVANS,Audio & Projector"
 
   Scenario: Edit a previously created webcast request
-    Given the following requests exist:
-      |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
-      | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page for "Armando Fox"
+    Given I am on the professor page for "Armando Fox"
+    And the following requests exist:
+      | CCN      |        26619      |
+      | Title    |       CS 169      |
+      | Location |      10 EVANS     |
+      | Days     |        TuTh       |
+      | Request  | Audio & Projector |
+      | Status   |      Approved     |
+    When I press "Edit Request"
     And I should see "CS 169"
-    When I follow "Edit Request"
-    Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
-    And I fill in "Request" with "Audio, Video & Projector"
+    Then I should see the following fields: "CCN,Title,Location,Days,Request"
+    And I fill the field "Request" with "Audio, Video & Projector"
     And I press "Submit"
-    Then I should be on the professor page
+    Then I should be on the professor page for "Armando Fox"
     And I should see "Audio, Video & Projector"
     And I should not see "Audio & Projector"
 
   Scenario: Delete a previously created webcast request
+    Given I am on the professor page for "Armando Fox"
     Given the following requests exist:
-      |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
-      | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page for "Armando Fox"
+      | CCN      |        26619      |
+      | Title    |       CS 169      |
+      | Location |      10 EVANS     |
+      | Days     |        TuTh       |
+      | Request  | Audio & Projector |
+      | Status   |      Approved     |
     And I should see "CS 169"
-    When I follow "Delete Request"
-    Then I should be on the professor page
-    And I should not see "CS 169"
+    When I follow the delete button
+    Then I should be on the professor page for "Armando Fox"
+    And I should not see the request
 

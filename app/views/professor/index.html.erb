@@ -24,6 +24,11 @@
               </li>
               <li>
                 <div>
+                  <a class="mui-btn mui-btn--flat" href="#services"><div>Listing Requests For:<%= @professor.name%></div></a>
+                </div>
+              </li>
+              <li>
+                <div>
                   <a class="mui-btn mui-btn--flat" href="#services"><div>FEATURES</div></a>
                 </div>
               </li>
@@ -40,80 +45,80 @@
             </ul>
           </div>
     </div>
-    <div class="button-container"><span class="button">&#10006;</span>
-      <div class="mui--text-display3">New Class</div>
-      <div class="mui--z3" id = 'form1'>
-        <form>
-          <!--<legend>Title</legend>-->
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="number">
-            <label>CCN</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Course Name</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Location</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Days & Time</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label">
-            <input type="text">
-            <label>Request/Layout</label>
-          </div>
-          <div class="mui-textfield mui-textfield--float-label" id = 'submit'>
-            <input type="text">
-            <label>Status</label>
-          </div>
-          <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
-        </form>
+      <div class="button-container" id="newReq" ><span class="button">&#10006;</span>
+        <div class="mui--text-display3">New Class</div>
+        <div class="mui--z3" id = 'form1'>
+            <%=form_tag(professor_create_path(@professor.id), :method => 'post') do%>
+              <p>
+                CCN:
+                <%= number_field_tag :ccn%>
+              </p>
+              <p>
+                Title:
+                <%= text_field_tag :course_name%>
+              </p>
+              <p>
+                Location:
+                <%= text_field_tag :location%>
+              </p>
+              <p>
+                Days:
+                <%= text_field_tag :days%>
+              </p>
+              
+              <p>
+                Request and Layout:
+                <%= text_field_tag :request_and_layout%>
+              </p>
+              <p>
+               <%= submit_tag 'Submit' %>
+              </p>
+            <%end%>
+        </div>
       </div>
-    </div>
-    <!--<div class="button-container"><span class="button">&#10006;</span>-->
-    <!--  <div class="mui--z3" id = 'form1'>-->
-        <!--<div class="head">-->
-        <!--  <div class="mui-container-fluid" >-->
-        <!--    <div class="mui-textfield mui-textfield--float-label">-->
-        <!--      <input type="text">-->
-        <!--      <label>Course Name</label>-->
-        <!--    </div>-->
-        <!--  </div>-->
-        <!--</div>-->
-        <!--<div class="mui-container-fluid">-->
-    <!--     <form>-->
-          <!--<legend>Title</legend>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="number">-->
-    <!--        <label>CCN</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Course Name</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Location</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Days & Time</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label">-->
-    <!--        <input type="text">-->
-    <!--        <label>Request/Layout</label>-->
-    <!--      </div>-->
-    <!--      <div class="mui-textfield mui-textfield--float-label" id = 'submit'>-->
-    <!--        <input type="text">-->
-    <!--        <label>Status</label>-->
-    <!--      </div>-->
-    <!--      <button type="submit" class="mui-btn mui-btn--raised">Submit</button>-->
-    <!--    </form>-->
-        <!--</div>-->
-    <!--  </div>-->
-    <!--</div>-->
-  <!--</div>-->
+      <% @requests.each do |currRequest| %>
+            
+        <div class="button-container" id="editReq"><span class="button">&#10006;</span>
+        <div class="mui--text-display3">Edit Class</div>
+        <div class="mui--z3" id = 'form2'>
+            <%=form_tag(professor_edit_path(currRequest.id), :method => 'post') do%>
+              <p>
+                CCN:
+                <%= number_field_tag :ccn, currRequest.course.ccn%>
+              </p>
+              <p>
+                Course Name:
+                <%= text_field_tag :course_name, currRequest.course.title%>
+              </p>
+              <p>
+                Location:
+                <%= text_field_tag :location, currRequest.course.location%>
+              </p>
+              <p>
+                Days:
+                <%= text_field_tag :days, currRequest.course.days%>
+              </p>
+              
+              <p>
+                Request and Layout:
+                <%= text_field_tag :request_and_layout, currRequest.comments%>
+              </p>
+              <p>
+                Status:
+                <% if currRequest.status == 0%>
+                  <%statTxt = 'Declined'%>
+                <% elsif currRequest.status == 1%>
+                  <%statTxt = 'Approved'%>
+                <%else%>
+                  <%statTxt = 'pending'%>
+                <%end%>
+                <%= text_field_tag "status", statTxt%>
+              </p>
+              <p>
+               <%= submit_tag 'Submit' %>
+              </p>
+            <%end%>
+        </div>
+      </div>
+    <% end %>
 </html>

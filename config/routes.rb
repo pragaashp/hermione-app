@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   # - - - - - - - - TEMPORARY - - - - - - - - - - #
   get 'professor/' => 'professor#index'
+  post 'professor_edit/:id' => 'professor#edit', as: :professor_edit
+  post 'professor_create/:id' => 'professor#create', as: :professor_create
   # - - - - - - - - - - - - - - - - - - - - - - - #
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
