@@ -5,7 +5,16 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
 
   def index
     @professor = Professor.find_by name: 'Armando Fox'
-    @requests = @professor.requests
+    if @professor == nil
+      # TODO get rid of this once CAS works
+      @professor = Professor.create({:name=> "Armando Fox", :department=>"Computer Science"})
+      request1 = Request.create({:comments=>"Audio & Projector", :status=>"Approved"})
+      Course.create({:ccn =>26619,:title => "CS 169",:location =>"10 EVANS", :days=>"TuTh", :time=>"1530-1700", :request=>request1,
+      :professors=>Professor.where(:name =>'Armando Fox')})
+      @requests = @professor.requests
+    else
+      @requests = @professor.requests
+    end
   end
 
   def new
