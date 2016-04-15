@@ -4,7 +4,6 @@ class Course < ActiveRecord::Base
   has_one :request
 
   def self.search(location,time,sort)
-    puts sort
     Course.where("location LIKE ?", "%#{location}%").where("time LIKE ?", "%#{time}%").order(sort)
   end
   
