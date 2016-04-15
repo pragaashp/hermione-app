@@ -6,12 +6,12 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
     end
 end
 
-Then /^(?:|I )should see the following fields: "([^"]*)"$/ do |fields|
-    fieldArr = fields.split(',')
-    fieldArr.each do |currField|
-        page.should have_content(currField)
-    end
-end
+# Then /^(?:|I )should see the following fields: "([^"]*)"$/ do |fields|
+#     fieldArr = fields.split(',')
+#     fieldArr.each do |currField|
+#         page.should have_content(currField)
+#     end
+# end
 
 When /^(?:|I )fill in the following:$/ do |fields|
     fields.rows_hash.each do |name, value|
@@ -46,22 +46,22 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     end
 end
 
-Given /^the following requests exist:$/ do |fields|
-    fields.rows_hash.each do |name, value|
-        if name == 'CCN'
-            within("#form2"){ find_field("ccn", with: value)}
-        elsif name == 'Title'
-            within("#form2"){ find_field('course_name').value.should eq value}
-        elsif name == 'Location'
-            within("#form2"){ find_field('location').value.should eq value}
-        elsif name == 'Days'
-            within("#form2"){ find_field('days').value.should eq value}
-        elsif name == 'Request'
-            within("#form2"){ find_field('request_and_layout').value.should eq value}
-        end
-    end
+# Given /^the following requests exist:$/ do |fields|
+#     fields.rows_hash.each do |name, value|
+#         if name == 'CCN'
+#             within("#form2"){ find_field("ccn", with: value)}
+#         elsif name == 'Title'
+#             within("#form2"){ find_field('course_name').value.should eq value}
+#         elsif name == 'Location'
+#             within("#form2"){ find_field('location').value.should eq value}
+#         elsif name == 'Days'
+#             within("#form2"){ find_field('days').value.should eq value}
+#         elsif name == 'Request'
+#             within("#form2"){ find_field('request_and_layout').value.should eq value}
+#         end
+#     end
     
-end
+# end
 
 And /^(?:|I )fill the field "([^"]*)" with "([^"]*)"$/ do |fieldName, value|
     if fieldName == "Request"
