@@ -9,7 +9,6 @@ end
 
 Then /I should see requests for the following courses: (.*)/ do |course_list|
   course_list.split(",").each do |course|
-    puts course
     page.should have_content(course)
   end
 end

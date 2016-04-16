@@ -1,4 +1,4 @@
-When /^(?:|I )press "([^"]*)"$/ do |button|
+When /^(?:|I )press the request button: "([^"]*)"$/ do |button|
     if button == "New Webcast Request"
         find("#newReq").click
     elsif button == "Edit Request"

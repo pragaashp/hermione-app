@@ -6,7 +6,7 @@ Feature: Create, Update, Read & Delete Requests
 
   Scenario: Create a new webcast request for a class
     Given I am on the professor page for "Armando Fox"
-    And I press "New Webcast Request"
+    And I press the request button: "New Webcast Request"
     Then I should see the following fields: CCN,Title,Location,Days,Request
     And I fill in the following:
       | CCN      |        26619      |
@@ -23,7 +23,7 @@ Feature: Create, Update, Read & Delete Requests
     And the following requests exist:
     |  CCN   |  Title  |  Professor  |    Location     | Days |   Time    |         Request          |  Status  |
     | 26619  |  CS 169 | Armando Fox |    10 EVANS     | TuTh | 1530-1700 |    Audio & Projector     |    0     |
-    When I press "Edit Request"
+    When I press the request button: "Edit Request"
     And I should see "CS 169"
     Then I should see the following fields: CCN,Title,Location,Days,Request
     And I fill the field "Request" with "Audio, Video & Projector"
