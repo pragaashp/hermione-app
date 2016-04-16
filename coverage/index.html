@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-16T00:22:09+00:00">2016-04-16T00:22:09+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-04-16T00:33:20+00:00">2016-04-16T00:33:20+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.67
+         1.38
        </span>
     </span> hits/line)
   </h2>
@@ -67,7 +67,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>8.1</td>
+        <td>7.4</td>
       </tr>
       
       <tr>
@@ -87,7 +87,7 @@
         <td>43</td>
         <td>11</td>
         <td>32</td>
-        <td>0.8</td>
+        <td>0.5</td>
       </tr>
       
       <tr>
@@ -153,7 +153,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.76
+         1.43
        </span>
     </span> hits/line)
   </h2>
@@ -195,7 +195,7 @@
         <td>7</td>
         <td>7</td>
         <td>0</td>
-        <td>8.1</td>
+        <td>7.4</td>
       </tr>
       
       <tr>
@@ -215,7 +215,7 @@
         <td>43</td>
         <td>11</td>
         <td>32</td>
-        <td>0.8</td>
+        <td>0.5</td>
       </tr>
       
     </tbody>
@@ -566,32 +566,32 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="7">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="7">
+          <span class="hits">10</span>
           
           <code class="ruby">    sort = params[:sort]</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="8">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="8">
+          <span class="hits">10</span>
           
           <code class="ruby">    if params[:search].nil? then location =&quot;&quot; else location = params[:search][:room] +&quot; &quot;+ params[:search][:building].upcase end</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="9">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="9">
+          <span class="hits">10</span>
           
           <code class="ruby">    if params[:time].nil? then time = &quot;&quot; else time = params[:time] end</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="10">
+          <span class="hits">10</span>
           
           <code class="ruby">    puts location</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="11">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="11">
+          <span class="hits">10</span>
           
           <code class="ruby">    @courses = Course.search(location,time,sort)</code>
         </li>
@@ -728,14 +728,14 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="7">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="7">
+          <span class="hits">3</span>
           
           <code class="ruby">    @professor = Professor.find_by name: &#39;Armando Fox&#39;</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="8">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="8">
+          <span class="hits">3</span>
           
           <code class="ruby">    if @professor == nil</code>
         </li>
@@ -746,20 +746,20 @@
           <code class="ruby">      # TODO get rid of this once CAS works</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="10">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="10">
+          <span class="hits">3</span>
           
           <code class="ruby">      @professor = Professor.create({:name=&gt; &quot;Armando Fox&quot;, :department=&gt;&quot;Computer Science&quot;})</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="11">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="11">
+          <span class="hits">3</span>
           
           <code class="ruby">      request1 = Request.create({:comments=&gt;&quot;Audio &amp; Projector&quot;, :status=&gt;&quot;Approved&quot;})</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="12">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="12">
+          <span class="hits">3</span>
           
           <code class="ruby">      Course.create({:ccn =&gt;26619,:title =&gt; &quot;CS 169&quot;,:location =&gt;&quot;10 EVANS&quot;, :days=&gt;&quot;TuTh&quot;, :time=&gt;&quot;1530-1700&quot;, :request=&gt;request1,</code>
         </li>
@@ -770,8 +770,8 @@
           <code class="ruby">      :professors=&gt;Professor.where(:name =&gt;&#39;Armando Fox&#39;)})</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="14">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="14">
+          <span class="hits">3</span>
           
           <code class="ruby">      @requests = @professor.requests</code>
         </li>
