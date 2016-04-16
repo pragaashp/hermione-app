@@ -32,17 +32,4 @@ Feature: Create, Update, Read & Delete Requests
     And I should see "Audio, Video & Projector"
     And I should not see "Audio & Projector"
 
-  Scenario: Delete a previously created webcast request
-    Given I am on the professor page
-    Given the following requests exist:
-      | CCN      |        26619      |
-      | Title    |       CS 169      |
-      | Location |      10 EVANS     |
-      | Days     |        TuTh       |
-      | Request  | Audio & Projector |
-      | Status   |      Approved     |
-    And I should see "CS 169"
-    When I follow the delete button
-    Then I should be on the professor page for "Armando Fox"
-    And I should not see the request
 
