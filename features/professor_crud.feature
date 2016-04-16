@@ -15,7 +15,7 @@ Feature: Create, Update, Read & Delete Requests
       | Days     |        TuTh       |
       | Request  | Audio & Projector |
     And I press "Submit"
-    Then I should be on the professor page for "Armando Fox"
+    Then I should be on the professor page
     And I should see "CS 169,TuTh,10 EVANS,Audio & Projector"
 
   Scenario: Edit a previously created webcast request
@@ -28,12 +28,12 @@ Feature: Create, Update, Read & Delete Requests
     Then I should see the following fields: CCN,Title,Location,Days,Request
     And I fill the field "Request" with "Audio, Video & Projector"
     And I press "Submit"
-    Then I should be on the professor page for "Armando Fox"
+    Then I should be on the professor page
     And I should see "Audio, Video & Projector"
     And I should not see "Audio & Projector"
 
   Scenario: Delete a previously created webcast request
-    Given I am on the professor page for "Armando Fox"
+    Given I am on the professor page
     Given the following requests exist:
       | CCN      |        26619      |
       | Title    |       CS 169      |
