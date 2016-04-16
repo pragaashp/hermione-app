@@ -14,7 +14,7 @@ Feature: Create, Update, Read & Delete Requests
       | Location |      10 EVANS     |
       | Days     |        TuTh       |
       | Request  | Audio & Projector |
-    And I press "Submit"
+    And I press the request button: "Submit New Request"
     Then I should be on the professor page
     And I should see "CS 169,TuTh,10 EVANS,Audio & Projector"
 
@@ -27,7 +27,7 @@ Feature: Create, Update, Read & Delete Requests
     And I should see "CS 169"
     Then I should see the following fields: CCN,Title,Location,Days,Request
     And I fill the field "Request" with "Audio, Video & Projector"
-    And I press "Submit"
+    And I press the request button: "Submit Edit Request"
     Then I should be on the professor page
     And I should see "Audio, Video & Projector"
     And I should not see "Audio & Projector"

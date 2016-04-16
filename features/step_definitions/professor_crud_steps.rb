@@ -3,6 +3,10 @@ When /^(?:|I )press the request button: "([^"]*)"$/ do |button|
         find("#newReq").click
     elsif button == "Edit Request"
         find("#editReq").click
+    elsif button == "Submit New Request"
+        within('#form1'){click_button("Submit")}
+    elsif button == "Submit Edit Request"
+        within('#form2'){click_button("Submit")}
     end
 end
 
