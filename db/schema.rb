@@ -11,18 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402192421) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20160421214258) do
 
   create_table "assignments", id: false, force: :cascade do |t|
     t.integer "professor_id"
     t.integer "course_id"
   end
 
-  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id", using: :btree
-  add_index "assignments", ["professor_id"], name: "index_assignments_on_professor_id", using: :btree
+  add_index "assignments", ["course_id"], name: "index_assignments_on_course_id"
+  add_index "assignments", ["professor_id"], name: "index_assignments_on_professor_id"
 
   create_table "courses", force: :cascade do |t|
     t.integer  "ccn"
@@ -39,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160402192421) do
     t.string   "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "email"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -48,9 +46,7 @@ ActiveRecord::Schema.define(version: 20160402192421) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
-  # declined, approved pending, 0, 1 and 2, respectively
 
-  add_index "requests", ["course_id"], name: "index_requests_on_course_id", using: :btree
+  add_index "requests", ["course_id"], name: "index_requests_on_course_id"
 
 end
