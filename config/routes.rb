@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get 'login/' => 'login#identify', as: :login
   get 'ets/' => 'ets#index', as: :ets
+  post 'ets/email', as: :email
 
   # - - - - - - - - TEMPORARY - - - - - - - - - - #
   get 'professor/' => 'professor#index'

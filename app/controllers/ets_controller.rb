@@ -9,5 +9,22 @@ class EtsController < ApplicationController # TEMPORARY: AFTER CAS -> CHANGE TO 
     if params[:time].nil? then time = "" else time = params[:time] end
     puts location
     @courses = Course.search(location,time,sort)
+    @requests = Request.all
+  end
+  
+  def email
+    action = params[:stuff]
+    req = params[:request]
+    req = Request.find(req)
+
+    # if accepted
+    if action == "accept"
+      req.status = "1"
+      req.save
+    # if rejeted
+    elsif action == "cancel"
+      req.delete
+    end
+    redirect_to ets_path
   end
 end
