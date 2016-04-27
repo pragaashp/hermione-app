@@ -16,6 +16,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rubycas-client-rails', :git => 'git://github.com/creativecommons/rubycas-client-rails.git'
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
 
 group :development, :test do
   gem 'byebug'              # Debugger.

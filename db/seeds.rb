@@ -9,9 +9,9 @@
 request1 = Request.create({:comments=>"Audio & Projector", :status=>"Approved"})
 request2 = Request.create({:comments=>"Audio & Video", :status=>"Pending"})
 request3 = Request.create({:comments=>"Audio, Video & Projector", :status=>"Denied"})
-professor1 = Professor.create({:name=> "Armando Fox", :department=>"Computer Science"})
-professor2 = Professor.create({:name=> "Joseph, A D", :department=>"Computer Science"})
-professor3 = Professor.create({:name=> "Shewchuk, J", :department=>"Computer Science"})
+professor1 = Professor.create({:name=> "Armando Fox", :department=>"Computer Science",:email =>"yc.lu95@gmail.com"})
+professor2 = Professor.create({:name=> "Joseph, A D", :department=>"Computer Science",:email =>"yc.lu95@gmail.com"})
+professor3 = Professor.create({:name=> "Shewchuk, J", :department=>"Computer Science",:email =>"yc.lu95@gmail.com"})
 
 Course.create({:ccn =>26619,:title => "CS 169",:location =>"10 EVANS", :days=>"TuTh", :time=>"1530-1700", :request=>request1,
 :professors=>Professor.where(:name =>'Armando Fox')})

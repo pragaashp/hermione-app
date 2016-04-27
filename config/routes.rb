@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'login/' => 'login#identify', as: :login
   get 'ets/' => 'ets#index', as: :ets
   post 'ets/email', as: :email
-
+  post 'ets/edit',as: :edit
   # - - - - - - - - TEMPORARY - - - - - - - - - - #
   get 'professor/' => 'professor#index'
   post 'professor_edit/:id' => 'professor#edit', as: :professor_edit
