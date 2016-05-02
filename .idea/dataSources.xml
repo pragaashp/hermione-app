@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1654558755">
+  <component name="DataSourceManagerImpl" format="xml" hash="1296365977">
     <data-source source="LOCAL" name="Rails hermoine: development" uuid="80136a92-346f-4ac3-bb00-d7aa943ddb08">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>

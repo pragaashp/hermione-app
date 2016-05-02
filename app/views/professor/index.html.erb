@@ -1,40 +1,334 @@
-<html>
-    <style>
-    table, td, th { border : 1px solid black; }
-    th { padding : 13px; }
-    td { padding : 15px; }
-    </style>
-    <head>
-        <body>
-            <h4>Professor: Armando Fox</h4>
-            <p>
-              <%=link_to 'New Webcast Request', '#', class: "create-link" %>
-            </p>
-            <table id="classesTable">
-              <thead>
-                <tr>
-                  <th>CCN</th>
-                  <th>Course</th>
-                  <th>Location</th>
-                  <th>Days & Time</th>
-                  <th>Request/Layout</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>26619</td>
-                  <td>CS 169</td>
-                  <td>10 EVANS</td>
-                  <td>TuTh 1530-1700</td>
-                  <td>Audio & Projector (Layout 1)</td>
-                  <td>Approved</td>
-                  <td><%=link_to 'Edit Request', '#', class: "edit-link" %></td>
-                </tr>
-              </tbody>
-                
-            </table>
-        </body>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="gbt filtered target results">
+    <title>Project Hermione: Professor</title>
+  
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'professor-bundle' %>
+    <%= javascript_include_tag 'application.js' %>
+    <%= javascript_include_tag 'professor-bundle' %>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                  <%= image_tag 'professor/logo.png', width: "150px" %>
+                </li>
+                <li>
+                  <a href="#" id="view-dashboard"><span class="fa fa-cubes"></span>My Courses</a>
+                </li>
+                <li>
+                    <a href="#" id="view-profile"><span class="fa fa-user"></span> Profile</a>
+                </li>
+                <li>
+                    <a href="https://auth.berkeley.edu/cas/logout"><span class="fa fa-sign-out"></span> Sign Out</a>
+                </li>
+                <li>
+                    <a href="#" id="view-tutorial"><span class="fa fa-question"></span>Help</a>
+                </li>
+            </ul>
+            <div id="schedule-info" class="padder-up">
+              <%= image_tag 'professor/ucb.png', width: "100px" %><br><br>
+              <p>© 2016 ASUC Office Of The CTO</p>
+            </div>
+<!--            <div id="schedule-info"></div>-->
+        </div>
+        <!-- #sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="col-xs-9">
+              <% unless flash[:message].nil? %>
+                <div class="flash-message">
+                  <span class="fa fa-exclamation"></span><b>Note:</b> <%= flash[:message] %>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-xs-3">
+              <div class="menu-btn" id="dots-menu">
+                <a href="#menu-toggle" class="menu-btn" id="menu-toggle">
+                  <span class="fa fa-th"></span>Menu
+                </a>
+              </div>
+            </div><br><br>
+            
+            <div class="container-fluid">
+                <div class="row">
+                  
+                    <div class="col-lg-12" id="all-courses">
+                        <h1>Courses</h1><hr>
+                        <div class="course-requests">
+                            <% @professor.courses.each do |course| %>
+                                <div class="container saved-course"><span class="edit-header-button">Edit Course</span>
+                                    <div class="col-xs-12 req-container">
+                                      <div class="col-xs-2">
+                                        <span class="label-case">Course</span><br>
+                                        <span class="text-left"><%= course.abbreviation %></span>
+                                      </div>
+                                      <div class="col-xs-3">
+                                        <span class="text-left label-case">Lecture Format</span><br>
+                                        <span class="text-left"><%= course.request.format %></span>
+                                      </div>
+                                      <div class="col-xs-3">
+                                        <span class="text-left label-case">Location</span><br>
+                                        <span class="text-left"><%= course.location %></span>
+                                      </div>
+                                      <div class="col-xs-2">
+                                        <span class="text-left label-case">Status</span><br>
+                                        <% if course.request.status > 0 %>
+                                            <span class="text-left approved-request">Approved</span>
+                                        <% elsif course.request.status < 0 %>
+                                            <span class="text-left declined-request">Declined</span>
+                                        <% else %>
+                                            <span class="text-left pending-request">Pending</span>
+                                        <% end %>
+                                      </div>
+                                      <div class="col-xs-2 text-left option-buttons">
+                                        <span class="edit-button"><span class="fa fa-pencil"></span><span class="edit-button-text">Edit</span></span>
+                                        <span class="delete-button"><span class="fa fa-trash-o"></span><span class="delete-button-text"><%=link_to 'Delete', professor_destroy_path(id: @professor.id, course_id: course.id) %></span></span>
+                                      </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="body">
+                                            <%= form_tag professor_update_path(id: @professor.id, course_id: course.id), method: :get, id: "course-form" do %>
+                                                <div class="col-md-6">
+                                                  <div class="group">
+                                                    <input type="text" class="used" name="course[title]" value="<%= course.title %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <label for="course[title]">Title</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <div class="group">
+                                                    <input type="number" class="used" name="course[ccn]" value="<%= course.ccn %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <label for="course[ccn]">Course Control Number</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <div class="group">
+                                                    <select class="location-select used" name="course[location]">
+                                                      <option value="<%= course.location %>" selected><%= course.location %></option>
+                                                    </select>
+                                                    <label for="course[location]">Location</label>
+                                                  </div>
+                                                  <div class="group">
+                                                    <input type="time" class="used" name="course[start_time]" value="<%= Course.normalize_time(course.start_time) %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <label for="course[start_time]">Start Time</label>
+                                                  </div>
+                                                  <div class="group">
+                                                    <input type="time" class="used" name="course[end_time]" value="<%= Course.normalize_time(course.end_time) %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <label for="course[end_time]">End Time</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <div class="group">
+                                                    <input type="text" class="used" name="course[abbreviation]" value="<%= course.abbreviation %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <label for="course[abbreviation]">Department Abbrevation & Course Number</label>
+                                                  </div>
+                                                  <div class="group checklist">
+                                                    <span class="check_pad"><p><br></p></span>
+                                                    <%=check_box_tag 'course[days][]', 'M', course.days_list.include?('M'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.days_list.include?('M') %>">Monday</span><br>
+                                                    <%=check_box_tag 'course[days][]', 'Tu', course.days_list.include?('Tu'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.days_list.include?('Tu') %>">Tuesday</span><br>
+                                                    <%=check_box_tag 'course[days][]', 'W', course.days_list.include?('W'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.days_list.include?('W') %>">Wednesday</span><br>
+                                                    <%=check_box_tag 'course[days][]', 'Th', course.days_list.include?('Th'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.days_list.include?('Th') %>">Thursday</span><br>
+                                                    <%=check_box_tag 'course[days][]', 'F', course.days_list.include?('F'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.days_list.include?('F') %>">Friday</span><br>
+                                                    <label for="course[days][]">Days Of The Week</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <div class="group checklist">
+                                                    <span class="check_pad"><p><br></p></span>
+                                                    <%=check_box_tag 'request[format]', 'Multiple Chalkboard', course.request.format.eql?('Multiple Chalkboard'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.request.format.eql?('Multiple Chalkboard') %>">Multiple Chalkboard</span><br>
+                                                    <%=check_box_tag 'request[format]', 'Class with Experimental Demonstrations', course.request.format.eql?('Class with Experimental Demonstrations'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.request.format.eql?('Class with Experimental Demonstrations') %>">Class with Experimental Demonstrations</span><br>
+                                                    <%=check_box_tag 'request[format]', 'Lecture with Slides', course.request.format.eql?('Lecture with Slides'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.request.format.eql?('Lecture with Slides') %>">Lecture with Slides</span><br>
+                                                    <%=check_box_tag 'request[format]', 'Basic Lecture', course.request.format.eql?('Basic Lecture'), class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if course.request.format.eql?('Basic Lecture') %>">Basic Lecture</span><br>
+                                                    <label for="request[format]">Lecture Format</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <div class="group">
+                                                    <% if course.request.comments.nil? %>
+                                                        <input type="text" name="request[comments]"><span class="highlight"></span><span class="bar"></span>
+                                                    <% else %>
+                                                        <input type="text" class="used" name="request[comments]" value="<%= course.request.comments %>"><span class="highlight"></span><span class="bar"></span>
+                                                    <% end %>
+                                                    <label for="request[comments]">Comments</label>
+                                                  </div>
+                                                </div>
+                                                <div class="col-md-6" id="reposition-button">
+                                                    <button type="button" class="button buttonBlue cancel-edit-form">Cancel
+                                                      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                                                    </button>
+                                                    <button type="submit" class="button buttonBlue">Submit
+                                                      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                                                    </button>
+                                                </div>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div><br><br>
+                            <% end %>
+                        </div>
+                      <!-- Add Course Button -->
+                        <div class="container"><span class="course_button">Add Course</span>
+                          <div class="content">
+                            <div class="body">
+                              <%= form_tag professor_create_path(id: @professor.id), method: :get, id: "course-form" do %>
+                                <div class="col-md-6">
+                                  <div class="group">
+                                    <input type="text" name="course[title]"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="course[title]">Title</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="group">
+                                    <input type="number" name="course[ccn]"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="course[ccn]">Course Control Number</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="group">
+                                    <select class="location-select used" name="course[location]">
+                                    </select>
+                                    <label for="course[location]">Location</label>
+                                  </div>
+                                  <div class="group">
+                                    <input type="time" class="used" name="course[start_time]" value="00:00:00"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="course[start_time]">Start Time</label>
+                                  </div>
+                                  <div class="group">
+                                    <input type="time" class="used" name="course[end_time]" value="00:00:00"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="course[end_time]">End Time</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="group">
+                                    <input type="text" name="course[abbreviation]"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="course[abbreviation]">Department Abbrevation & Course Number</label>
+                                  </div>
+                                  <div class="group checklist">
+                                    <span class="check_pad"><p><br></p></span>
+                                    <%=check_box_tag 'course[days][]', 'M', false, class: 'used checkbox checkbox--blue' %><span>Monday</span><br>
+                                    <%=check_box_tag 'course[days][]', 'Tu', false, class: 'used checkbox checkbox--blue' %><span>Tuesday</span><br>
+                                    <%=check_box_tag 'course[days][]', 'W', false, class: 'used checkbox checkbox--blue' %><span>Wednesday</span><br>
+                                    <%=check_box_tag 'course[days][]', 'Th', false, class: 'used checkbox checkbox--blue' %><span>Thursday</span><br>
+                                    <%=check_box_tag 'course[days][]', 'F', false, class: 'used checkbox checkbox--blue' %><span>Friday</span><br>
+                                    <label for="course[days][]">Days Of The Week</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="group checklist">
+                                    <span class="check_pad"><p><br></p></span>
+                                    <input type="checkbox" class="used checkbox checkbox--blue" name="request[format]" value="Multiple Chalkboard"><span>Multiple Chalkboard</span><br>
+                                    <input type="checkbox" class="used checkbox checkbox--blue" name="request[format]" value="Class with Experimental Demonstrations"><span>Class with Experimental Demonstrations</span><br>
+                                    <input type="checkbox" class="used checkbox checkbox--blue" name="request[format]" value="Lecture with Slides"><span>Lecture with Slides</span><br>
+                                    <input type="checkbox" class="used checkbox checkbox--blue" name="request[format]" value="Basic Lecture"><span>Basic Lecture</span><br>
+                                    <label for="request[format]">Lecture Format</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="group">
+                                    <input type="text" name="request[comments]"><span class="highlight"></span><span class="bar"></span>
+                                    <label for="request[comments]">Comments</label>
+                                  </div>
+                                </div>
+                                <div class="col-md-6" id="reposition-button">
+                                    <button type="button" class="button buttonBlue cancel-form">Cancel
+                                      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                                    </button>
+                                    <button type="submit" class="button buttonBlue">Submit
+                                      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                                    </button>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-12" id="profile-page">
+                        <h1>Profile</h1><hr><br>
+                        <%= form_tag professor_profile_path(id: @professor.id), method: :get, id: "profile-form" do %>
+                          <div class="group">
+                            <% if @professor.name.nil? %>
+                                <input type="text" name="professor[name]"><span class="highlight"></span><span class="bar"></span>
+                            <% else %>
+                                <input type="text" class="used" name="professor[name]" value="<%= @professor.name %>"><span class="highlight"></span><span class="bar"></span>
+                            <% end %>
+                            <label for="professor[name]">Name</label>
+                          </div>
+                          <div class="group">
+                            <% if @professor.department.nil? %>
+                                <input type="text" name="professor[department]"><span class="highlight"></span><span class="bar"></span>
+                            <% else %>
+                                <input type="text" class="used" name="professor[department]" value="<%= @professor.department %>"><span class="highlight"></span><span class="bar"></span>
+                            <% end %>
+                            <label for="professor[department]">Department</label>
+                          </div>
+                          <div class="group">
+                            <% if @professor.department.nil? %>
+                                <input type="email" name="professor[email]"><span class="highlight"></span><span class="bar"></span>
+                            <% else %>
+                                <input type="email" class="used" name="professor[email]" value="<%= @professor.email %>"><span class="highlight"></span><span class="bar"></span>
+                            <% end %>
+                            <label for="professor[email]">Email</label>
+                          </div>
+                          <div class="group checklist">
+                            <span class="check_pad"><p><br></p></span>
+                            <%=check_box_tag 'professor[subscription]', 'request_copy', @professor.request_copy, class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if @professor.request_copy %>">Send Me a Copy of My Requests</span><br>
+                            <%=check_box_tag 'professor[subscription]', 'notification', @professor.notification, class: 'used checkbox checkbox--blue' %><span class="<%= 'check_select' if @professor.notification %>">Notify Me on Approval & Declines</span><br>
+                            <label for="professor[subscription]">Subscription</label>
+                          </div>
+                          <div id="reposition-button">
+                            <button type="submit" class="button buttonBlue">Save
+                              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                            </button>
+                          </div>
+                        <% end %>
+                    </div>
+                  
+                    <div class="col-lg-12" id="help-page">
+                        <h1>Help</h1><hr>
+                        <h4>Adding a Request for a Course</h4><br>
+                        <ul>
+                          <li>Navigate to the <%= image_tag 'professor/my-courses-tab.png', height: "20px", class: "rounded-img" %> page via the left sidebar.</li><br>
+                          <li>Click the <%= image_tag 'professor/add-course-button.png', height: "30px" %> button to add a new course and request.</li><br>
+                          <li>Fill in the required information and click <%= image_tag 'professor/submit-course-button.png', height: "28px" %>.</li><br>
+                        </ul><br>
+                        <h4>Updating Personal Information & Settings</h4><br>
+                        <ul>
+                          <li>Navigate to the <%= image_tag 'professor/my-profile-tab.png', height: "20px", class: "rounded-img" %> page via the left sidebar.</li><br>
+                          <li>Change your name, department, email and subscription settings and click <%= image_tag 'professor/save-button.png', height: "28px" %>.</li><br>
+                        </ul><br>
+                        <h4>Tips & Hints</h4><br>
+                        <ul>
+                          <li>Click the <%= image_tag 'professor/sidebar-toggle-button.png', height: "28px" %> button to toggle the sidebar on the left.</li><br>
+                          <li>Click the <%= image_tag 'professor/sign-out-tab.png', height: "20px", class: "rounded-img" %> button to log out of CalNet.</li><br>
+                        </ul><br>
+                    </div>
+                  
+                </div>
+            </div>
+          
+            <div class="empty-container"><br></div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+</body>
+
 </html>

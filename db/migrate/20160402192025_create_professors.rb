@@ -3,6 +3,9 @@ class CreateProfessors < ActiveRecord::Migration
     create_table :professors do |t|
       t.string :name
       t.string :department
+      t.string :email
+      t.boolean :request_copy, default: false
+      t.boolean :notification, default: false
       t.timestamps null: false
     end
 

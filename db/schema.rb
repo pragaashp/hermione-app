@@ -24,26 +24,32 @@ ActiveRecord::Schema.define(version: 20160402192421) do
   create_table "courses", force: :cascade do |t|
     t.integer  "ccn"
     t.string   "title"
+    t.string   "abbreviation"
     t.string   "location"
     t.string   "days"
-    t.string   "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "start_time"
+    t.string   "end_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "professors", force: :cascade do |t|
     t.string   "name"
     t.string   "department"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.boolean  "request_copy", default: false
+    t.boolean  "notification", default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "requests", force: :cascade do |t|
     t.text     "comments"
-    t.integer  "status"
+    t.integer  "status",     default: 0
+    t.string   "format"
     t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "requests", ["course_id"], name: "index_requests_on_course_id"

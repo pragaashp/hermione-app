@@ -3,9 +3,11 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.integer :ccn
       t.string :title
+      t.string :abbreviation
       t.string :location
       t.string :days
-      t.string :time
+      t.string :start_time
+      t.string :end_time
       t.timestamps null: false
     end
   end

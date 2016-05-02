@@ -34,5 +34,9 @@ module Hermione
 
     # Set RubyCAS base url for authentication.
     config.rubycas.cas_base_url = 'https://auth.berkeley.edu/cas/login?service=https://hermione.herokuapp.com/login'
+
+    # Precompile Assets.
+    config.assets.precompile += %w( *-bundle.js )
+    config.assets.precompile += %w( *-bundle.css )
   end
 end

@@ -4,8 +4,10 @@
 <html>
   <head>
     <title>Project Hermione (Beta)</title>
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'splash-bundle' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'splash-bundle' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -263,42 +265,8 @@
     </div>
   </div>
 
-  <!-- Portfolio Modal 4 -->
-  <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <hgroup>
-          <h1>Sign In</h1>
-          <h3>Using your CAL ID and Passphrase</h3>
-        </hgroup>
-        <form>
-          <div class="group">
-            <input type="text"><span class="highlight"></span><span class="bar"></span>
-            <label>Username</label>
-          </div>
-          <div class="group">
-            <input type="password"><span class="highlight"></span><span class="bar"></span>
-            <label>Password</label>
-          </div>
-          <div class="button-container">
-            <button type="button" class="button buttonBlue" id="loginButton">LOGIN
-              <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
   <!-- Plugin JavaScript -->
-  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>-->
-  <%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js' %>
 
   </body>
 

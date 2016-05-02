@@ -1,122 +1,157 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/PragaashP/Workspace/hermione/app/controllers/ets_controller.rb": [
+      "/Users/PragaashP/workspace/hermione/app/controllers/ets_controller.rb": [
         1,
         null,
         null,
         null,
         null,
         1,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/application_controller.rb": [
+        1,
+        1,
+        1,
         1,
         null,
         null,
         1,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/helpers/ets_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/helpers/main_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/helpers/professor_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/main_controller.rb": [
-        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
         null,
         1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/models/professor.rb": [
+      "/Users/PragaashP/workspace/hermione/app/controllers/application_controller.rb": [
         1,
-        1,
+        null,
+        null,
         1,
         null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/professor_controller.rb": [
+      "/Users/PragaashP/workspace/hermione/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/PragaashP/workspace/hermione/app/helpers/ets_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/PragaashP/workspace/hermione/app/helpers/main_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/PragaashP/workspace/hermione/app/helpers/professor_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/PragaashP/workspace/hermione/app/controllers/main_controller.rb": [
         1,
         null,
-        null,
-        null,
-        null,
         1,
         null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        1,
         null,
         null,
         null,
         null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/controllers/login_controller.rb": [
+      "/Users/PragaashP/workspace/hermione/app/models/professor.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        null,
+        null,
+        null
       ],
-      "/Users/PragaashP/Workspace/hermione/app/models/course.rb": [
+      "/Users/PragaashP/workspace/hermione/app/controllers/professor_controller.rb": [
         0,
         0,
         0,
-        0
-      ],
-      "/Users/PragaashP/Workspace/hermione/app/models/request.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1460046048
+    "timestamp": 1462230782
   }
 }
