@@ -11,3 +11,6 @@
 #   page.all('#classesTable').count.should == 1
 # end
 
+Given /^that professor "(.*)" exists$/ do |name|
+  Professor.create!(name: name)
+end

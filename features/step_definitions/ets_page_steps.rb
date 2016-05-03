@@ -41,3 +41,29 @@ When /^I follow "(.*)" and I get redirected$/ do |link|
     expect(e.message).to match(/\/cas\/login/)
   end
 end
+
+And /^I check "(.*)" for request format$/ do |format|
+  page.first(:css, "input[value='#{format}']").set(true)
+end
+
+And /^I uncheck "(.*)" for request format$/ do |format|
+  page.first(:css, "input[value='#{format}']").set(false)
+end
+
+And /^I press "(.*)" in "(.*)"$/ do |button,scope|
+  within('form#'+scope.to_s) do
+    click_button(button)
+  end
+end
+
+And /^I should not see "(.*)" in "(.*)"$/ do |format,scope|
+  within('div.'+scope.to_s) do
+    step %{I should not see "#{format}"}
+  end
+end
+
+And /^I should see "(.*)" in "(.*)"$/ do |format,scope|
+  within('div.'+scope.to_s) do
+    step %{I should see "#{format}"}
+  end
+end

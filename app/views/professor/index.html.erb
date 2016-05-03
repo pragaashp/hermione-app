@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="content">
                                         <div class="body">
-                                            <%= form_tag professor_update_path(id: @professor.id, course_id: course.id), method: :get, id: "course-form" do %>
+                                            <%= form_tag professor_update_path(id: @professor.id, course_id: course.id), method: :get, id: "edit-course-form" do %>
                                                 <div class="col-md-6">
                                                   <div class="group">
                                                     <input type="text" class="used" name="course[title]" value="<%= course.title %>"><span class="highlight"></span><span class="bar"></span>
@@ -135,7 +135,7 @@
                                                 <div class="col-md-6">
                                                   <div class="group">
                                                     <input type="text" class="used" name="course[abbreviation]" value="<%= course.abbreviation %>"><span class="highlight"></span><span class="bar"></span>
-                                                    <label for="course[abbreviation]">Department Abbrevation & Course Number</label>
+                                                    <label for="course[abbreviation]">Department Abbreviation & Course Number</label>
                                                   </div>
                                                   <div class="group checklist">
                                                     <span class="check_pad"><p><br></p></span>
@@ -216,7 +216,7 @@
                                 <div class="col-md-6">
                                   <div class="group">
                                     <input type="text" name="course[abbreviation]"><span class="highlight"></span><span class="bar"></span>
-                                    <label for="course[abbreviation]">Department Abbrevation & Course Number</label>
+                                    <label for="course[abbreviation]">Department Abbreviation & Course Number</label>
                                   </div>
                                   <div class="group checklist">
                                     <span class="check_pad"><p><br></p></span>

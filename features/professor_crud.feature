@@ -5,40 +5,38 @@ Feature: Create, Update, Read & Delete Requests
   I want to view my classes, submit webcast request and check their status
 
   Scenario: Create a new webcast request for a class
-    Given I am on the professor page for "Armando Fox"
+    Given that professor "Professor A" exists
+    Given I am on the professor page for "Professor A"
     Then I should see the following fields: "Course Control Number,Title,Abbreviation,Location,Days,Start Time,End Time,Format,Comments"
-    And I fill in the following:
-      | CCN      |        26619      |
-      | Title    |       CS 169      |
-      | Location |      10 EVANS     |
-      | Days     |        TuTh       |
-      | Time     |     1530-1700     |
-      | Request  | Audio & Projector |
+    And I fill in "course[abbreviation]" with "CS 169"
+    And I check "Lecture with Slides" for request format
     And I press "Submit"
-    Then I should be on the professor page
-    And I should see the following: "CS 169,TuTh,10 EVANS,Audio & Projector"
+    Then I should be on the professor page for "Professor A"
+    And I should see "CS 169"
+    And I should see "Lecture with Slides"
+    And I should see "Pending"
 
   Scenario: Edit a previously created webcast request
     Given the following requests exist:
-      |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
-      | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page for "Armando Fox"
-    And I should see "CS 169"
-    When I follow "Edit Request"
-    Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
-    And I fill in "Request" with "Audio, Video & Projector"
-    And I press "Submit"
-    Then I should be on the professor page
-    And I should see "Audio, Video & Projector"
-    And I should not see "Audio & Projector"
+      |  CCN   |  Abbreviation  |  Professor  |    Location     | Days |   Time    |         Format          |  Status  |
+      | 16903  |     TC 103     | Professor A |    10 EVANS     | TuTh | 1530-1700 |   Lecture with Slides   | Pending  |
+    And I am on the professor page for "Professor A"
+    And I should see "TC 103"
+    Then I should see the following fields: "Course Control Number,Title,Abbreviation,Location,Days,Start Time,End Time,Format,Comments"
+    And I uncheck "Lecture with Slides" for request format
+    And I check "Basic Lecture" for request format
+    And I press "Submit" in "edit-course-form"
+    Then I should be on the professor page for "Professor A"
+    And I should not see "Lecture with Slides" in "req-container"
+    And I should see "Basic Lecture" in "req-container"
 
   Scenario: Delete a previously created webcast request
     Given the following requests exist:
-      |  CCN   |  Title  |  Professor  | Location | Days |   Time    |     Request       |  Status  |
-      | 26619  |  CS 169 | Armando Fox | 10 EVANS | TuTh | 1530-1700 | Audio & Projector | Approved |
-    And I am on the professor page for "Armando Fox"
-    And I should see "CS 169"
-    When I follow "Delete Request"
-    Then I should be on the professor page
-    And I should not see "CS 169"
+      |  CCN   |  Abbreviation  |  Professor  |    Location     | Days |   Time    |         Format          |  Status  |
+      | 16903  |     TC 103     | Professor A |    10 EVANS     | TuTh | 1530-1700 |   Lecture with Slides   | Pending  |
+    And I am on the professor page for "Professor A"
+    And I should see "TC 103"
+    When I follow "Delete"
+    Then I should be on the professor page for "Professor A"
+    And I should not see "TC 103"
 

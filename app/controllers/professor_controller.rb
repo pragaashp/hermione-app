@@ -56,7 +56,8 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
   def parse_params_request
     params[:request][:comments] ||= 'No Comment.'
     params[:request][:format] ||= 'Basic Lecture'
-    params.require(:request).permit(:comments, :format)
+    params[:request][:status] = 0
+    params.require(:request).permit(:comments, :format, :status)
   end
 
   def parse_params_profile
