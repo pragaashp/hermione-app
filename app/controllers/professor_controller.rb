@@ -16,9 +16,11 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
       updated_course = Course.update(params[:course_id], course)
       updated_course.request.update_attributes!(parse_params_request)
     else
-      prof_info = params[:professor].slice(:name, :email, :department)
-      prof_info[:request_copy] = params[:professor][:subscription].include?('request_copy')
-      prof_info[:notification] = params[:professor][:subscription].include?('notification')
+      professor_params = parse_params_profile
+      $stderr.puts "PROFESSOR PARAMETERS: #{professor_params}"
+      prof_info = professor_params.slice(:name, :email, :department)
+      prof_info[:request_copy] = professor_params[:subscription].include?('request_copy')
+      prof_info[:notification] = professor_params[:subscription].include?('notification')
       Professor.update(params[:id], prof_info)
     end
     redirect_to professor_path(params[:id])
@@ -56,6 +58,11 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
     params[:request][:comments] ||= 'No Comment.'
     params[:request][:format] ||= 'Basic Lecture'
     params.require(:request).permit(:comments, :format)
+  end
+
+  def parse_params_profile
+    params[:professor][:subscription] = [params[:professor][:subscription]].flatten
+    params.require(:professor).permit(:name, :email, :department, subscription: [])
   end
 
 end
