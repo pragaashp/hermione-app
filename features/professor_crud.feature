@@ -6,8 +6,7 @@ Feature: Create, Update, Read & Delete Requests
 
   Scenario: Create a new webcast request for a class
     Given I am on the professor page for "Armando Fox"
-    And I follow "New Webcast Request"
-    Then I should see the following fields: "CCN,Title,Location,Days,Time,Request"
+    Then I should see the following fields: "Course Control Number,Title,Abbreviation,Location,Days,Start Time,End Time,Format,Comments"
     And I fill in the following:
       | CCN      |        26619      |
       | Title    |       CS 169      |

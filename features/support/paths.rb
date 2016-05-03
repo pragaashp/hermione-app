@@ -13,18 +13,13 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the home\s?page$/
-      '/'
+    when /^the home\s?page$/;  '/'
 
-    when /^the professor page for "(.*)"$/
-      professor_path(Professor.find_by_name($1))
+    when /^the CalNet authentication page$/; '/cas/login'
 
-    # Temporary placeholder until an actual path exists
-    when /^the professor request page$/
-      '/professor'
+    when /^the professor page for "(.*)"$/; professor_path(Professor.find_by_name($1))
       
-    when /^the ETS page$/
-      ets_path
+    when /^the ETS page$/; ets_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

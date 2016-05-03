@@ -1,6 +1,18 @@
 {
   "Cucumber Features": {
     "coverage": {
+      "/Users/PragaashP/workspace/hermione/app/models/professor.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null
+      ],
       "/Users/PragaashP/workspace/hermione/app/controllers/ets_controller.rb": [
         1,
         null,
@@ -8,25 +20,24 @@
         null,
         null,
         1,
+        10,
+        10,
+        10,
+        10,
+        null,
+        null,
         1,
-        1,
-        1,
-        1,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        2,
         null,
         null,
         1,
         0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
         null,
         null,
         null,
@@ -72,18 +83,6 @@
         1,
         null,
         null,
-        null,
-        null,
-        null
-      ],
-      "/Users/PragaashP/workspace/hermione/app/models/professor.rb": [
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        0,
         null,
         null,
         null
@@ -149,9 +148,15 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
-    "timestamp": 1462230782
+    "timestamp": 1462256635
   }
 }

@@ -11,18 +11,17 @@ class EtsController < ApplicationController # TEMPORARY: AFTER CAS -> CHANGE TO 
   end
 
   def update
-    request = Request.update(params[:id], status: params[:status])
-    if params[:status] > 0
-      send_accept_message(request.course.professors.first, request.course)
-    else
-      send_reject_message(request.course.professors.first, request.course)
-    end
+    request = Request.update(params[:id], status: params[:status].to_i)
+    # if params[:status].to_i > 0
+    #   send_accept_message(request.course.professors.first, request.course)
+    # else
+    #   send_reject_message(request.course.professors.first, request.course)
+    # end
     redirect_to ets_path
   end
 
   def send_accept_message(professor, course)
-    RestClient.post "https://api:key-6f2ddc1440a8cb30defa080219767e6e"\
-    "@api.mailgun.net/v3/sandboxd878e942441a4dfe8de8574efe8459b0.mailgun.org/messages",
+    RestClient.post "https://api:key-6f2ddc1440a8cb30defa080219767e6e@api.mailgun.net/v3/sandboxd878e942441a4dfe8de8574efe8459b0.mailgun.org/messages",
                     :from => "ETS Admin <postmaster@sandboxd878e942441a4dfe8de8574efe8459b0.mailgun.org>",
                     :to => professor.email,
                     :subject => "Your Webcast Request has Been Accepted",

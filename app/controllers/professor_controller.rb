@@ -17,7 +17,6 @@ class ProfessorController < ApplicationController # TEMPORARY: AFTER CAS -> CHAN
       updated_course.request.update_attributes!(parse_params_request)
     else
       professor_params = parse_params_profile
-      $stderr.puts "PROFESSOR PARAMETERS: #{professor_params}"
       prof_info = professor_params.slice(:name, :email, :department)
       prof_info[:request_copy] = professor_params[:subscription].include?('request_copy')
       prof_info[:notification] = professor_params[:subscription].include?('notification')

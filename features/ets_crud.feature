@@ -4,28 +4,38 @@ Feature: View webcast requests submitted by faculty members/professors.
   So that I arrange for webcasts based on requested preferences
   I want to view requests and filter them by location, day and/or time
 
-  Given the following requests exist:
-    |  CCN   |  Title  |  Professor  |    Location     | Days |   Time    |         Request          |  Status  |
-    | 26619  |  CS 169 | Armando Fox |    10 EVANS     | TuTh | 1530-1700 |    Audio & Projector     | Approved |
-    | 26520  |  CS 162 | Joseph, A D | 245 LI KA SHING |  MW  | 1700-1830 |      Audio & Video       |  Pending |
-    | 26826  |  CS 189 | Shewchuk, J |   2050 VLSB     |  MW  | 1830-2000 | Audio, Video & Projector |  Denied  |
-  And I am on the ETS page
+  Background: Preloading data...
+    Given the following requests exist:
+      |  CCN   |  Abbreviation  |  Professor  |    Location     | Days |   Time    |         Format          |  Status  |
+      | 16903  |     TC 103     | Professor A |    10 EVANS     | TuTh | 1530-1700 |   Lecture with Slides   | Approved |
+      | 16902  |     TC 102     | Professor B | 245 LI KA SHING |  MW  | 1700-1830 |      Basic Lecture      |  Pending |
+      | 16901  |     TC 101     | Professor C |   2050 VLSB     |  MW  | 1830-2000 |   Multiple Chalkboard   | Declined |
+    And I am on the ETS page
 
   Scenario: View & sort all submitted request for webcasts
-    Then I should see requests for the following courses: "CS 169,CS 162,CS 189"
+    Then I should see requests for the following courses: "TC 101,TC 102,TC 103"
     And I follow "Time"
-    Then I should see "CS 162" before "CS 189"
-    And I follow "Professor"
-    Then I should see "CS 169" before "CS 162"
+    Then I should see "TC 103" before "TC 101"
+    And I follow "Course"
+    Then I should see "TC 101" before "TC 102"
     And I follow "Location"
     Then I should see "10 EVANS" before "245 LI KA SHING"
 
   Scenario: Filter submitted requests for webcasts
-    Then I should see requests for the following courses: "CS 169,CS 162,CS 189"
-    And I should see the following fields: "Building,Room,Time"
-    When I select "VLSB" from "Building"
-    And I select "2050" from "Room"
-    And I press "Submit"
-    Then I should see requests for the following courses: "CS 189"
-    And I should not see requests for the following courses: "CS 162,CS 169"
+    Then I should see requests for the following courses: "TC 101,TC 102,TC 103"
+    And I should see the following fields: "Location,Start Time,End Time"
+    When I fill in "search[start_time]" with "15:00:00"
+    And I fill in "search[end_time]" with "18:00:00"
+    And I press "Filter"
+    Then I should see requests for the following courses: "TC 103"
+    And I should not see requests for the following courses: "TC 101,TC 102"
 
+  Scenario: Approve a submitted request
+    Then I should see requests for the following courses: "TC 101,TC 102,TC 103"
+    When I follow "Approve"
+    And I should see "Approved"
+
+  Scenario: Decline a submitted request
+    Then I should see requests for the following courses: "TC 101,TC 102,TC 103"
+    When I follow "Decline"
+    And I should see "Declined"
